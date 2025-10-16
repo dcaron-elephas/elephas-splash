@@ -3,72 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coming Soon</title>
-  <meta name="description" content="We're building something great. Check back soon." />
+  <title>Elephas — Coming Soon</title>
+  <meta name="description" content="Success Through Structured Change And Smart Systems." />
   <meta name="robots" content="noindex, nofollow" />
-  <meta property="og:title" content="Coming Soon" />
-  <meta property="og:description" content="We're building something great. Check back soon." />
+  <meta property="og:title" content="Elephas — Coming Soon" />
+  <meta property="og:description" content="Success Through Structured Change And Smart Systems." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="" />
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <main class="container card" role="main">
-    <header class="header">
-      <span class="badge" aria-hidden="true">Coming soon</span>
-      <h1>We're building something great</h1>
-      <p class="sub">Thanks for stopping by! Leave your info and a message below and we'll reach out as soon as we're live.</p>
+  <!-- Decorative background (always behind content) -->
+  <div class="bg" aria-hidden="true">
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="pattern"></div>
+  </div>
+
+  <!-- Main white card wrapper so content stays readable -->
+  <main class="wrap" role="main">
+    <header class="brand">
+      <img class="logo logo-horizontal" src="assets/img/elephas-logo-horizontal.png" alt="Elephas" />
+      <img class="logo logo-stacked" src="assets/img/elephas-logo-stacked.png" alt="Elephas" />
     </header>
 
-    <div class="content">
-      <div class="panel">
-        <section>
-          <h2>Contact us</h2>
-          <p class="small">This form posts to Formspree. Replace the <code>action</code> URL with your Formspree endpoint. It will work with or without JavaScript.</p>
-          
-          <!--
-            ✅ How to enable submissions with Formspree:
-            1) Create a form at https://formspree.io (free tier works)
-            2) Replace the action below with your endpoint, e.g. https://formspree.io/f/abcdxyz
-            3) (Optional) Add a thank-you redirect: <input type="hidden" name="_next" value="https://yourdomain/thanks.html" />
-          -->
+    <section class="hero">
+      <span class="badge" aria-hidden="true">Coming soon</span>
+<h1>Success Through Structured Change And Smart Systems</h1>
+      <p class="tagline"></p>
+      <!--<h1>We’re building something great.</h1>
+      <p class="tagline">Success Through Structured Change And Smart Systems</p>-->
+      <p class="lede">
+        We’re building something great for you! Contact us to find out more.
+      </p>
+    </section>
 
-          <form id="contact-form" action="https://formspree.io/f/xanpagjp" method="POST" target="_self" novalidate>
-            <input type="hidden" name="_subject" value="New message from Coming Soon page" />
+    <section class="contact">
+      <div class="card">
+        <h2>Contact Us</h2>
+        <p class="muted">This form posts securely to Formspree. You’ll see a confirmation when it succeeds.</p>
 
-            <!-- Honeypot (spam trap) -->
-            <label class="hp" for="website">Website</label>
-            <input class="hp" id="website" type="text" name="website" tabindex="-1" autocomplete="off" />
+        <form id="contact-form" action="https://formspree.io/f/xanpagjp" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Elephas — Coming Soon message" />
+          <!-- Honeypot -->
+          <label class="hp" for="website">Website</label>
+          <input class="hp" id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
 
-            <div class="row">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required />
-              </div>
+          <div class="row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="" autocomplete="name" required />
             </div>
-            <div>
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="" autocomplete="email" required />
             </div>
-            <button type="submit">Send</button>
-            <div id="form-status" class="status" role="status" aria-live="polite"></div>
-            <noscript>
-              <p class="small">JavaScript is disabled. The form will submit the traditional way.</p>
-            </noscript>
-          </form>
-        </section>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+          </div>
 
-        <section>
-          <h2>About</h2>
-          <p class="small">We're heads-down on the launch. In the meantime, follow our updates and feel free to say hi via the form.</p>
-        </section>
+          <button type="submit" class="btn">Send</button>
+          <div id="form-status" class="status" role="status" aria-live="polite"></div>
+          <noscript><p class="muted">JavaScript is disabled. The form will submit the traditional way.</p></noscript>
+        </form>
       </div>
-    </div>
-    <div class="footer">© <span id="year"></span> Your Company · <a class="brand" href="#">@yourhandle</a></div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> Elephas Corp. • All rights reserved.</p>
+      </div>
+    </footer>
   </main>
 
   <script src="assets/js/main.js" defer></script>
