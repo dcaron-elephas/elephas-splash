@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coming Soon</title>
+  <meta name="description" content="We're building something great. Check back soon." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="Coming Soon" />
+  <meta property="og:description" content="We're building something great. Check back soon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <main class="container card" role="main">
+    <header class="header">
+      <span class="badge" aria-hidden="true">Coming soon</span>
+      <h1>We're building something great</h1>
+      <p class="sub">Thanks for stopping by! Leave your info and a message below and we'll reach out as soon as we're live.</p>
+    </header>
+
+    <div class="content">
+      <div class="panel">
+        <section>
+          <h2>Contact us</h2>
+          <p class="small">This form posts to Formspree. Replace the <code>action</code> URL with your Formspree endpoint. It will work with or without JavaScript.</p>
+          
+          <!--
+            ✅ How to enable submissions with Formspree:
+            1) Create a form at https://formspree.io (free tier works)
+            2) Replace the action below with your endpoint, e.g. https://formspree.io/f/abcdxyz
+            3) (Optional) Add a thank-you redirect: <input type="hidden" name="_next" value="https://yourdomain/thanks.html" />
+          -->
+
+          <form id="contact-form" action="https://formspree.io/f/xanpagjp" method="POST" target="_self" novalidate>
+            <input type="hidden" name="_subject" value="New message from Coming Soon page" />
+
+            <!-- Honeypot (spam trap) -->
+            <label class="hp" for="website">Website</label>
+            <input class="hp" id="website" type="text" name="website" tabindex="-1" autocomplete="off" />
+
+            <div class="row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required />
+              </div>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+            </div>
+            <button type="submit">Send</button>
+            <div id="form-status" class="status" role="status" aria-live="polite"></div>
+            <noscript>
+              <p class="small">JavaScript is disabled. The form will submit the traditional way.</p>
+            </noscript>
+          </form>
+        </section>
+
+        <section>
+          <h2>About</h2>
+          <p class="small">We're heads-down on the launch. In the meantime, follow our updates and feel free to say hi via the form.</p>
+        </section>
+      </div>
+    </div>
+    <div class="footer">© <span id="year"></span> Your Company · <a class="brand" href="#">@yourhandle</a></div>
+  </main>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
