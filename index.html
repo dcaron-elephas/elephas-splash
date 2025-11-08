@@ -1,80 +1,346 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elephas — Coming Soon</title>
-  <meta name="description" content="Success Through Structured Change And Smart Systems." />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta property="og:title" content="Elephas — Coming Soon" />
-  <meta property="og:description" content="Success Through Structured Change And Smart Systems." />
-  <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Elephas</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-79H477PVKN');
+</script>
 </head>
-<body>
-  <!-- Decorative background (always behind content) -->
-  <div class="bg" aria-hidden="true">
-    <div class="shape s1"></div>
-    <div class="shape s2"></div>
-    <div class="pattern"></div>
-  </div>
 
-  <!-- Main white card wrapper so content stays readable -->
-  <main class="wrap" role="main">
-    <header class="brand">
-      <img class="logo logo-horizontal" src="assets/img/elephas-logo-horizontal.png" alt="Elephas" />
-      <img class="logo logo-stacked" src="assets/img/elephas-logo-stacked.png" alt="Elephas" />
-    </header>
+<body class="index-page">
 
-    <section class="hero">
-      <span class="badge" aria-hidden="true">Coming soon</span>
-<h1>Success Through Structured Change And Smart Systems</h1>
-      <p class="tagline"></p>
-      <!--<h1>We’re building something great.</h1>
-      <p class="tagline">Success Through Structured Change And Smart Systems</p>-->
-      <p class="lede">
-        We’re building something great for you! Contact us to find out more.
-      </p>
-    </section>
+<!-- Header Include -->
+<header id="header" class="header d-flex align-items-center sticky-top">
+<div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
 
-    <section class="contact">
-      <div class="card">
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+            <h1>Building systems that feel simple but work hard.</h1>
+            <p>We help growing US companies, especially leasing & rental, get Microsoft Business Central humming and your website pulling its weight. Calm guidance, fast iterations, measurable wins.</p>
+            <div class="d-flex">
+              <a href="#services" class="btn-get-started">Get Started</a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
+            <img src="assets/img/hero-img.png" class="img-fluid " alt="">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Featured Services Section -->
+    <section id="featured-services" class="featured-services section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-activity icon"></i></div>
+              <h4><a href="#services" class="stretched-link">BC Implementation Done Right</a></h4>
+              <p>Clear plan, clean configuration, smooth data migration, and a supported go-live. The way it should feel.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+              <h4><a href="#services" class="stretched-link">Extensions & connections</a></h4>
+              <p>Custom systems that play nice with upgrades. Connect BC to the tools you already trust, web, payments, CRM, analytics.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+              <h4><a href="#services" class="stretched-link">Web services that pull their weight</a></h4>
+              <p>Hosting and web mastering to keep things fast and safe, plus custom themes/plugins and SEO so the site actually drives growth.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Featured Services Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>About Us<br></span>
+        <h2>About Us</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/about.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
+            <h3>Small team. Senior talent. Big on outcomes.</h3>
+            <p class="fst-italic">
+Elephas is a hands-on group of BC and web folks with 70+ years of combined experience. We partner with small and midsize teams to turn good intentions into working systems, especially in leasing and rentals where asset utilization, service workflows, and invoicing matter. We’ll keep it human, keep it moving, and keep score so you see progress.
+            </p>
+            <ul>
+              <li><i class="bi bi-check2-all"></i> <span>Start clear: shared goals and a practical plan</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Ship in weeks: small releases, steady momentum</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Make adoption easy: training and support, built in</span></li>
+            </ul>
+            <p>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+  
+
+    <!-- Services Section -->
+    <section id="services" class="services section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>Services</span>
+        <h2>Services</h2>
+        <p>Build for tomorrow: upgrades shouldn’t hurt!</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-activity"></i>
+              </div>
+              <a href="business-central-implementation.html" class="stretched-link">
+                <h3>Business Central Implementation</h3>
+              </a>
+              <p>From discovery to go-live, configuration, data migration, training, and stabilization. No jargon. No black boxes.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-broadcast"></i>
+              </div>
+              <a href="service-details.html" class="stretched-link">
+                <h3>Engineering & Integrations</h3>
+              </a>
+              <p>AL extensions, automation, and REST/Graph integrations that connect BC with the rest of your stack, without breaking upgrades.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-easel"></i>
+              </div>
+              <a href="service-details.html" class="stretched-link">
+                <h3>GL Migration & Upgrades</h3>
+              </a>
+              <p>Bring your history forward with confidence. We map, validate, and reconcile so the numbers line up and the team trusts them.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-bounding-box-circles"></i>
+              </div>
+              <a href="service-details.html" class="stretched-link">
+                <h3>Hosting & Web Mastering</h3>
+              </a>
+              <p>Fast, secure, and monitored. We handle updates, backups, and performance so your site keeps selling.</p>
+              <a href="service-details.html" class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-calendar4-week"></i>
+              </div>
+              <a href="service-details.html" class="stretched-link">
+                <h3>Design Services</h3>
+              </a>
+              <p>Clean, brand-true marketing materials that make sense to your customers.</p>
+              <a href="service-details.html" class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+              <a href="service-details.html" class="stretched-link">
+                <h3>Custom Plugins, Themes & SEO</h3>
+              </a>
+              <p>Purpose-built features and technical SEO/analytics that make results visible, and repeatable.</p>
+              <a href="service-details.html" class="stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+  
+
+  
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section accent-background">
+
+      <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <h3>Where could you be 90 days from now?</h3>
+              <p>Let’s map a small first release, pick the integrations that matter, and set goals you can measure.</p>
+              <a class="cta-btn" href="#contact">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>Contact Us</span>
         <h2>Contact Us</h2>
-        <form id="contact-form" action="https://formspree.io/f/xanpagjp" method="POST" novalidate>
-          <input type="hidden" name="_subject" value="Elephas — Coming Soon message" />
-          <!-- Honeypot -->
-          <label class="hp" for="website">Website</label>
-          <input class="hp" id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        <p>Share where you’re headed! We're excited to talk to you about next steps.</p>
+      </div><!-- End Section Title -->
 
-          <div class="row">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="" autocomplete="name" required />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="" autocomplete="email" required />
-            </div>
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
-          </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-          <button type="submit" class="btn">Send</button>
+        <div class="row gy-4">
+
+
+
+          <div class="col-lg-12">
+
+<form id="contact-form" action="https://formspree.io/f/mgvpgapz" method="POST" novalidate class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <label for="name-field" class="pb-2">Name</label>
+                  <input type="text" name="name" id="name-field" class="form-control" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="company-field" class="pb-2">Company</label>
+                  <input type="text" class="form-control" name="company" id="company-field" required>
+                </div>
+
+                <div class="col-md-12">
+                  <label for="email-field" class="pb-2">Email</label>
+                  <input type="email" class="form-control" name="email" id="email-field" required>
+                </div>
+
+                <div class="col-md-12">
+                  <label for="message-field" class="pb-2">Message</label>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" required></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
           <div id="form-status" class="status" role="status" aria-live="polite"></div>
           <noscript><p class="muted">JavaScript is disabled. The form will submit the traditional way.</p></noscript>
-        </form>
-      </div>
-    </section>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p>© <span id="year"></span> Elephas Corp. • All rights reserved.</p>
-      </div>
-    </footer>
-  </main>
+                  <button type="submit">Send Message</button>
+                </div>
 
-  <script src="assets/js/main.js" defer></script>
+              </div>
+            </form>
+
+
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+</main>
+<!-- Footer Include -->
+<div data-include="partials/footer.html"></div>
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+
+  <!-- Includes JS File -->
+  <script src="assets/js/includes.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
 </body>
+
 </html>
