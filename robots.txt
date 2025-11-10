@@ -1,0 +1,9 @@
+User-agent: *
+# Don’t index include/fragment files
+Disallow: /partials/
+
+# Everything else (your HTML pages + assets) is allowed
+Allow: /
+
+# XML sitemap for crawlers
+Sitemap: https://elephas.us/sitemap.xml
