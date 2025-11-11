@@ -109,11 +109,13 @@ h6 {
 
 @media (max-width: 575px) {
 .img-right{
+  max-width:600px;
   width:100vw;
   height:auto;
   float:none;
 }
 .img-left{
+  max-width:600px;
   width:100vw;
   height:auto;
   float:none;
