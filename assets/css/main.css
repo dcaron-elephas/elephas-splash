@@ -95,6 +95,17 @@ h6 {
   font-family: var(--heading-font);
 }
 
+.img-right{
+  max-width:300px;
+  height:auto;
+  float:right;
+}
+.img-left{
+  max-width:300px;
+  height:auto;
+  float:left;
+}
+
 /* PHP Email Form Messages
 ------------------------------*/
 .php-email-form .error-message {
