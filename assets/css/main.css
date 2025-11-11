@@ -104,6 +104,7 @@ h6 {
   max-width:300px;
   height:auto;
   float:left;
+  padding:10px;
 }
 
 /* PHP Email Form Messages
