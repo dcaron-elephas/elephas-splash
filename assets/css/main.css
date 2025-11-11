@@ -106,6 +106,9 @@ h6 {
   float:left;
   padding:10px;
 }
+article h2{
+margin-top:20px;
+}
 
 /* PHP Email Form Messages
 ------------------------------*/
