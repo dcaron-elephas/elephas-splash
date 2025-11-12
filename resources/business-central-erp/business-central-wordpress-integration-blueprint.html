@@ -180,17 +180,16 @@
   <p>
     The fastest Business Central call is the one that doesn&rsquo;t happen. Performance comes from smart caching and choosing when to read directly from BC versus from a local copy.
   </p>
+    <figure>
+    <img src="/assets/img/resources/bc-wp-cache-layer.png" class="img-left"
+         alt="Diagram showing a cache layer between Business Central and WordPress to reduce direct ERP calls">
+    <figcaption>Figure 3 &ndash; Caching layer to protect Business Central and keep the site fast.</figcaption>
+  </figure>
   <ul>
     <li><strong>Cache frequently accessed data:</strong> Products, attributes, and other semi-static information can be synced and stored in WordPress.</li>
     <li><strong>Use background refresh:</strong> Refresh caches on a schedule or on change, not on every page view.</li>
     <li><strong>Be intentional with real-time calls:</strong> Use them only when the user truly needs up-to-the-second information.</li>
   </ul>
-
-  <figure>
-    <img src="/assets/img/resources/bc-wp-cache-layer.png" class="img-left"
-         alt="Diagram showing a cache layer between Business Central and WordPress to reduce direct ERP calls">
-    <figcaption>Figure 3 &ndash; Caching layer to protect Business Central and keep the site fast.</figcaption>
-  </figure>
 
   <p>
     Think of Business Central as the source of truth, not the primary rendering engine for your site. Let WordPress and your integration layer do the heavy lifting for user-facing traffic.
