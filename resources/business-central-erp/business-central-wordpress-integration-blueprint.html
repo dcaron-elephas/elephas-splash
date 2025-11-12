@@ -109,7 +109,11 @@
   <p>
     There are many ways to wire systems together, but most successful Business Central&ndash;WordPress integrations share a few core patterns.
   </p>
-
+  <figure>
+    <img src="/assets/img/resources/bc-wp-request-flow.png" class="img-left"
+         alt="Flow diagram illustrating requests from a user’s browser to WordPress, then to an integration layer, and finally to Business Central">
+    <figcaption>Figure 2 &ndash; Request flow from website visitor to Business Central through an integration layer.</figcaption>
+  </figure>
   <h3>Key Components</h3>
   <ul>
     <li><strong>Business Central APIs / OData:</strong> Standard endpoints for reading and writing data.</li>
@@ -117,12 +121,6 @@
     <li><strong>Integration layer:</strong> A set of services, middleware, or custom plugins that know how to talk to both Business Central and WordPress.</li>
     <li><strong>WordPress front end:</strong> Templates, shortcodes, blocks, or custom endpoints that expose the data in a usable way.</li>
   </ul>
-
-  <figure>
-    <img src="/assets/img/resources/bc-wp-request-flow.png" class="img-left"
-         alt="Flow diagram illustrating requests from a user’s browser to WordPress, then to an integration layer, and finally to Business Central">
-    <figcaption>Figure 2 &ndash; Request flow from website visitor to Business Central through an integration layer.</figcaption>
-  </figure>
 
   <h3>Why You Don&rsquo;t Want WordPress Talking Directly to Business Central</h3>
   <p>
