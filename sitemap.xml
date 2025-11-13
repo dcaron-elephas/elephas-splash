@@ -46,13 +46,21 @@
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
-      <url>
+
+  <url>
     <loc>https://elephas.us/resources</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
-    <url>
+
+  <url>
     <loc>https://elephas.us/resources/business-central-erp/business-central-wordpress-integration-blueprint.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/web-wordpress/benefits-of-organic-seo.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
