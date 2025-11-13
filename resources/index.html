@@ -16,7 +16,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -68,6 +68,19 @@
     <section>
       <h2>Web &amp; WordPress<br><br></h2>
       <p>Coming Soon!</p>
+      <!-- NEW ARTICLE -->
+      <article>
+        <h3>
+          <a href="/resources/web-wordpress/benefits-of-organic-seo.html">
+            The Benefits of Organic SEO (and Why It’s Vital for Your Business &amp; Budget)
+          </a>
+        </h3>
+        <p class="resource-meta">
+          Categories: Web &amp; WordPress · Guides &amp; Checklists<br>
+          Why organic SEO compounds, lowers CAC, and strengthens every channel—plus quick wins, KPIs, and a simple 30/60/90 plan.
+        </p>
+      </article>
+      <!-- /NEW ARTICLE -->
     </section>
 
     <section>
@@ -104,6 +117,39 @@
   <!-- Main JS File -->
   <script src="/assets/js/main.js"></script>
 
+  <!-- SCHEMA: CollectionPage with ItemList of articles -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Elephas Resources",
+    "url": "https://elephas.us/resources",
+    "isPartOf": { "@type": "WebSite", "name": "Elephas", "url": "https://elephas.us/" },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Article",
+            "headline": "Business Central–WordPress Integration: A Practical Blueprint for Growing Businesses",
+            "url": "https://elephas.us/resources/business-central-erp/business-central-wordpress-integration-blueprint.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Article",
+            "headline": "The Benefits of Organic SEO (and Why It’s Vital for Your Business & Budget)",
+            "url": "https://elephas.us/resources/web-wordpress/benefits-of-organic-seo.html"
+          }
+        }
+      ]
+    }
+  }
+  </script>
 
 </body>
 
