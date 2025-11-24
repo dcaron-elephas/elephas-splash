@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Integration Logging and Monitoring, How to Stop Debugging in Production | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to design integration logging and monitoring so you stop debugging in production and start seeing issues before users do.">
+  <link rel="canonical" href="https://elephas.us/resources/integrations-architecture/integration-logging-and-monitoring.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Integration Logging and Monitoring, How to Stop Debugging in Production</h1>
+
+    <p>Most integration problems are not hard, they are just invisible until a customer complains or finance finds a gap. Good logging and monitoring turns integrations from guesswork into something you can inspect, measure, and improve without living inside production consoles all day.</p>
+
+    <h2>Why Integrations Are So Painful to Debug</h2>
+    <p>Integrations sit between systems, which means they are usually blamed by everyone and owned by no one.</p>
+    <ul>
+      <li>The website team sees a form submit but no record in the ERP.</li>
+      <li>The ERP team sees missing orders and assumes the website is broken.</li>
+      <li>Operations sees inconsistent statuses across portals and back office screens.</li>
+    </ul>
+    <p>When you do not have a clear integration log, every incident becomes a detective story across web servers, ERP traces, and email threads.</p>
+
+    <h2>What to Log for Each Integration Event</h2>
+    <p>Useful logging starts by treating each integration call as a first class event, not just a background detail.</p>
+    <p>At a minimum, each event should capture:</p>
+    <ul>
+      <li><strong>Correlation ID:</strong> A unique identifier you can use across systems and logs.</li>
+      <li><strong>Timestamp:</strong> When the event started and when it completed.</li>
+      <li><strong>Source and target:</strong> Which system called and which system responded.</li>
+      <li><strong>Operation:</strong> For example, CreateQuote, UpdateCustomer, SyncInventory.</li>
+      <li><strong>Key business identifiers:</strong> Customer number, email, document number, or external IDs.</li>
+      <li><strong>Status:</strong> Success, Failed, or Retried with a count.</li>
+      <li><strong>Error information:</strong> Error code and a human readable message when something goes wrong.</li>
+    </ul>
+    <p>You do not always need to store full payloads, but you do need enough context that someone in operations can recognize the record and trace what happened.</p>
+
+    <h2>Logs for Developers vs Logs for Operations</h2>
+    <p>One mistake is to assume that the only audience for logs is developers. That usually results in walls of stack traces and technical details that no one else can use.</p>
+    <p>A better split looks like this:</p>
+    <ul>
+      <li><strong>Operational log:</strong> A table or dashboard that shows one row per integration event with status, business identifiers, and user friendly messages.</li>
+      <li><strong>Technical log:</strong> Deeper traces, stack traces, and raw payloads stored in log files or a dedicated logging system.</li>
+    </ul>
+    <p>Operations and support teams should be able to answer basic questions without opening a code editor.</p>
+
+    <h2>Database Tables vs Log Files vs External Tools</h2>
+    <p>There is no single correct place to put logs, but each option has trade offs.</p>
+    <ul>
+      <li><strong>ERP tables (for example, Business Central log or staging tables):</strong> Great for business centric views and joining with other ERP data.</li>
+      <li><strong>Website database tables (for example, WordPress custom tables):</strong> Useful for tracking inbound submissions and their integration status.</li>
+      <li><strong>Log files or cloud logging services:</strong> Best for high volume, low level traces and debugging information.</li>
+    </ul>
+    <p>In practice, you often want a combination: summarized events in tables for humans, and detailed logs in files or a logging platform for developers.</p>
+
+    <h2>Designing an Integration Log Schema</h2>
+    <p>If you create a dedicated integration log table or entity, keep the schema simple and consistent across different flows.</p>
+    <ul>
+      <li><strong>Log ID</strong> (primary key).</li>
+      <li><strong>Correlation ID</strong> (used by external systems and search).</li>
+      <li><strong>Source System</strong> and <strong>Target System</strong>.</li>
+      <li><strong>Operation Name</strong> (for example, QuoteIntake, CustomerSync).</li>
+      <li><strong>Business Key</strong> (customer number, email, document number, etc.).</li>
+      <li><strong>Start Time</strong> and <strong>End Time</strong>.</li>
+      <li><strong>Status</strong> and <strong>Retry Count</strong>.</li>
+      <li><strong>Error Code</strong> and <strong>Error Message</strong> (optional when successful).</li>
+    </ul>
+    <p>Using the same shape for different integrations lets you build shared reports and monitoring, instead of one off tools for each flow.</p>
+
+    <h2>Monitoring, Dashboards, and Alerts</h2>
+    <p>Logging is only half the story. You also need a way to see patterns and get notified when something goes wrong.</p>
+    <ul>
+      <li><strong>Dashboards:</strong> Show event counts over time, success rates, and top error types.</li>
+      <li><strong>Backlog indicators:</strong> Monitor how many events are stuck in New or Failed status for key flows.</li>
+      <li><strong>Threshold based alerts:</strong> Trigger alerts when failure rates exceed a threshold, when queues grow too large, or when specific critical errors appear.</li>
+      <li><strong>Environment awareness:</strong> Make it clear whether you are looking at production, staging, or development data.</li>
+    </ul>
+    <p>These do not have to be elaborate. Even a simple table plus a scheduled email summary can dramatically reduce “surprise” failures.</p>
+
+    <h2>Correlation IDs and End to End Tracing</h2>
+    <p>Correlation IDs are one of the simplest tools you can add, and one of the most helpful.</p>
+    <ul>
+      <li>Generate a unique ID when a request starts on the website or API gateway.</li>
+      <li>Include that ID in logs, headers, and ERP staging records.</li>
+      <li>Return it in error messages to support or users when appropriate.</li>
+    </ul>
+    <p>That way, when someone sends you a screenshot or ticket, you can search for one ID and see the full path across WordPress, middleware, and Business Central.</p>
+
+    <h2>Logging in a WordPress and Business Central Integration</h2>
+    <p>For a WordPress plus Business Central stack, a practical pattern looks like this:</p>
+    <ul>
+      <li><strong>On the website:</strong> Log form submissions to a custom table with correlation IDs and basic status fields (Submitted, SentToERP, ERPConfirmed, Failed).</li>
+      <li><strong>In Business Central:</strong> Use staging tables for intake (for example, QuoteIntake, LeadIntake) with their own status and error fields.</li>
+      <li><strong>In the integration layer:</strong> Log each API call with correlation IDs, HTTP status codes, and response times.</li>
+      <li><strong>For operations:</strong> Provide pages or reports in both WordPress and Business Central where staff can search by email, customer number, or correlation ID.</li>
+    </ul>
+    <p>This way, you can answer “what happened to this request” from either side without guessing.</p>
+
+    <h2>Common Logging and Monitoring Mistakes</h2>
+    <p>Even teams that attempt logging often fall into a few predictable traps.</p>
+    <ul>
+      <li><strong>Too much noise:</strong> Logging every tiny detail without structure, making it hard to find signal.</li>
+      <li><strong>No retention policy:</strong> Keeping logs forever until storage or performance becomes an issue.</li>
+      <li><strong>No standard format:</strong> Each integration writes logs differently so tools cannot be shared.</li>
+      <li><strong>Production only:</strong> Logging that exists only in production, making it hard to debug in test environments.</li>
+      <li><strong>Alert fatigue:</strong> Alerts that fire constantly for minor issues, causing people to ignore them.</li>
+    </ul>
+    <p>The fix is usually to simplify: fewer, better structured events, clear retention, and alerts tuned to real business impact.</p>
+
+    <h2>How Elephas Approaches Integration Observability</h2>
+    <p>At Elephas, we treat logging and monitoring as part of integration design, not an afterthought.</p>
+    <ul>
+      <li>We help define what “good enough” visibility looks like for your stack and your team size.</li>
+      <li>We design log and staging schemas that line up with Business Central and your website’s data model.</li>
+      <li>We implement correlation IDs and structured logging across WordPress, middleware, and Business Central.</li>
+      <li>We add lightweight dashboards and alerts so you see integration issues before customers and auditors do.</li>
+    </ul>
+    <p>The goal is simple: when something goes wrong, you can find out what, where, and why in minutes, not days, and you can fix it without guessing in production.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Integration Logging and Monitoring, How to Stop Debugging in Production",
+  "description": "How to design integration logging and monitoring so you stop debugging in production and start seeing issues before users do.",
+  "image": [
+    "https://elephas.us/assets/img/resources/integration-logging-and-monitoring.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/integrations-architecture/integration-logging-and-monitoring.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

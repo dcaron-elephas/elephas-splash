@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Real Time vs Batch Integrations, How to Decide What Needs Live Data | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical guide to choosing between real time and batch integrations so your ERP, website, and other systems stay fast, reliable, and easy to support.">
+  <link rel="canonical" href="https://elephas.us/resources/integrations-architecture/realtime-vs-batch-integrations.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Real Time vs Batch Integrations, How to Decide What Needs Live Data</h1>
+
+    <p>“We need real time” is one of the most common requirements in integration projects. In reality, only a small portion of flows truly need live data. The rest can be event driven or batch, which are usually simpler, cheaper, and more reliable. This guide gives you a practical way to decide which is which.</p>
+
+    <h2>What We Mean by Real Time and Batch</h2>
+    <p>Before arguing about options, it helps to define terms in plain language.</p>
+    <ul>
+      <li><strong>Real time:</strong> A user action in one system triggers an immediate call to another system, and the response affects what the user sees right away. For example, checking credit in Business Central while a customer service rep is on the phone.</li>
+      <li><strong>Near real time / event driven:</strong> Events are pushed quickly between systems, usually within seconds or minutes, but not blocking a user screen. For example, sending a new quote from the website to Business Central via an intake API as soon as it is submitted.</li>
+      <li><strong>Batch:</strong> Data moves on a schedule, such as every 5, 15, or 60 minutes, or overnight. For example, syncing inventory snapshots from Business Central to the website every hour.</li>
+    </ul>
+    <p>Most of the time, the real question is not “real time or batch” but “what needs to be blocking and what can be asynchronous.”</p>
+
+    <h2>When You Really Need Real Time</h2>
+    <p>There are legitimate cases where real time integration is worth the complexity.</p>
+    <ul>
+      <li><strong>Decisions with immediate financial impact:</strong> Credit checks, payment authorization, or limit checks that must be correct before you proceed.</li>
+      <li><strong>Scarce resources:</strong> Allocating a limited asset such as a specific rental unit, seat, or time slot that could be double booked.</li>
+      <li><strong>Compliance or policy enforcement:</strong> Rules that must be applied before a transaction is accepted, not after the fact.</li>
+      <li><strong>High touch interactions:</strong> Scenarios where a person is on the phone or chat and must give a firm answer based on ERP data.</li>
+    </ul>
+    <p>In those cases, the user experience and risk profile justify calling an ERP like Business Central in the critical path.</p>
+
+    <h2>When Batch or Event Driven Is Better</h2>
+    <p>For many other flows, insisting on real time just adds cost and fragility without real business benefit.</p>
+    <ul>
+      <li><strong>Reporting and dashboards:</strong> Boards and managers almost never need second by second updates.</li>
+      <li><strong>Marketing and analytics:</strong> Lead scoring, campaign attribution, and trends work fine on a delay of minutes or hours.</li>
+      <li><strong>Non critical status updates:</strong> Updating a customer portal with “in progress” versus “completed” typically does not need millisecond precision.</li>
+      <li><strong>Reference data feeds:</strong> Sharing product catalogs, rate tables, or location lists can be scheduled.</li>
+    </ul>
+    <p>In these areas, batch or event driven integrations are simpler to operate and much more tolerant of outages or slowdowns.</p>
+
+    <h2>How Real Time Impacts Reliability and Cost</h2>
+    <p>Real time sounds good on paper, but it couples systems tightly.</p>
+    <ul>
+      <li>If Business Central is slow or unavailable, your website or CRM may slow down or fail.</li>
+      <li>Every user action becomes subject to network issues, rate limits, and transient errors.</li>
+      <li>Scaling becomes harder, because peak traffic on the website drives peak load on the ERP.</li>
+      <li>Debugging requires you to look across more systems in the critical path.</li>
+    </ul>
+    <p>Batch and event driven approaches let you buffer, retry, and shape load, which usually leads to higher overall reliability.</p>
+
+    <h2>Designing for Perceived Real Time</h2>
+    <p>Often, users do not need true real time. They just need the experience to feel responsive.</p>
+    <ul>
+      <li>Show immediate confirmation of form submissions while processing ERP updates in the background.</li>
+      <li>Use progress indicators and clear messaging instead of blocking spinners.</li>
+      <li>Refresh parts of the UI when updates arrive, without making the user wait on an ERP call.</li>
+      <li>Provide realistic timing expectations, such as “You will see this in your portal within a few minutes.”</li>
+    </ul>
+    <p>This lets you keep the user experience snappy while keeping ERP work asynchronous and controlled.</p>
+
+    <h2>Real Time vs Batch for Website and Business Central</h2>
+    <p>For a typical WordPress plus Business Central stack, a pragmatic split might look like this:</p>
+    <ul>
+      <li><strong>Real time or near real time:</strong> Credit checks, contract eligibility checks, or pricing calls invoked by internal staff tools.</li>
+      <li><strong>Event driven:</strong> Web quote submissions, contact requests, and self service changes flowing into Business Central staging tables.</li>
+      <li><strong>Batch:</strong> Nightly or hourly updates of product data, pricing snapshots, inventory availability summaries, and analytics exports.</li>
+    </ul>
+    <p>The key is to keep the public website mostly decoupled from ERP performance, while still respecting Business Central as the system of record.</p>
+
+    <h2>Error Handling, Retries, and Back Pressure</h2>
+    <p>Error handling is one of the biggest differences between real time and batch approaches.</p>
+    <ul>
+      <li><strong>In real time:</strong> You must decide immediately what to tell the user if the ERP is slow or returns an error. That usually means fallbacks or graceful degradation.</li>
+      <li><strong>In batch or event driven:</strong> You can queue messages, retry with back off, and alert someone if thresholds are exceeded.</li>
+      <li><strong>For both:</strong> You need correlation IDs and logs so you can trace a specific transaction end to end.</li>
+    </ul>
+    <p>Thinking about error paths early often reveals that some flows are better off asynchronous.</p>
+
+    <h2>A Simple Decision Checklist</h2>
+    <p>When someone says “this needs to be real time,” run through this checklist:</p>
+    <ul>
+      <li>If this took 5 minutes instead of 5 seconds, would anything truly break.</li>
+      <li>Is a person actually waiting on the other side of the screen for a final answer from the ERP.</li>
+      <li>Will errors be easy or hard to recover from if something goes wrong in the middle.</li>
+      <li>Does this require locking or allocating a scarce resource in a way that must be coordinated centrally.</li>
+      <li>How often will this run at peak times, and can the ERP realistically handle that load.</li>
+    </ul>
+    <p>If the honest answers do not strongly justify real time, consider an event driven or batch pattern instead.</p>
+
+    <h2>How Elephas Helps You Make the Call</h2>
+    <p>Choosing between real time and batch is not just a technical decision. It affects user experience, operations, and support.</p>
+    <ul>
+      <li>We map your key flows across website, Business Central, and other systems.</li>
+      <li>We help you categorize each integration by risk, volume, and timing sensitivity.</li>
+      <li>We propose architectures that use real time only where it pays off and batch or event driven patterns everywhere else.</li>
+      <li>We implement staging tables, logging, and monitoring so you can see how integrations behave in practice.</li>
+    </ul>
+    <p>The result is an integration landscape that feels fast where it matters, stays robust under load, and does not require heroics every time one system has a bad day.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Real Time vs Batch Integrations, How to Decide What Needs Live Data",
+  "description": "A practical guide to choosing between real time and batch integrations so your ERP, website, and other systems stay fast, reliable, and easy to support.",
+  "image": [
+    "https://elephas.us/assets/img/resources/realtime-vs-batch-integrations.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/integrations-architecture/realtime-vs-batch-integrations.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Staging Tables 101, The Safest Way to Integrate Your Website With an ERP | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how staging tables make website to ERP integrations safer, more debuggable, and easier to evolve without risking your production data.">
+  <link rel="canonical" href="https://elephas.us/resources/integrations-architecture/staging-tables-101-website-erp-integration.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Staging Tables 101, The Safest Way to Integrate Your Website With an ERP</h1>
+
+    <p>The fastest way to break an ERP is to let your website write directly into production tables. The safer pattern, used by teams that have learned the hard way, is to send data into staging tables first. From there, the ERP can validate, enrich, and promote records into live entities under its own rules.</p>
+
+    <h2>What Is a Staging Table</h2>
+    <p>A staging table is a temporary or semi permanent table used as an intake layer between external systems such as your website and your core ERP entities.</p>
+    <p>Instead of the website creating customers, orders, or quotes directly in live tables, it sends data into a staging table such as:</p>
+    <ul>
+      <li><code>WebQuoteIntake</code> for online quotes.</li>
+      <li><code>WebLeadIntake</code> for contact or demo requests.</li>
+      <li><code>WebOrderIntake</code> for ecommerce or self service orders.</li>
+    </ul>
+    <p>From there, ERP code units, jobs, or background processes validate and transform the data into proper customers, quotes, or sales orders.</p>
+
+    <h2>Why Staging Tables Are Safer</h2>
+    <p>Staging tables exist because website and ERP worlds move at different speeds and have different concerns.</p>
+    <ul>
+      <li><strong>Validation control:</strong> The ERP can enforce its own rules before committing anything to live tables.</li>
+      <li><strong>Error handling:</strong> Failed records stay in staging with clear error messages instead of disappearing.</li>
+      <li><strong>Decoupling:</strong> The website does not need to know internal keys, posting rules, or table structures.</li>
+      <li><strong>Audit trail:</strong> You can see exactly what the website sent, when, and how it was processed.</li>
+    </ul>
+    <p>In practice, this means fewer mysterious records, easier debugging, and far less risk to financial data.</p>
+
+    <h2>What a Good Staging Table Includes</h2>
+    <p>A useful staging table is more than a dump of fields. It should be designed for operations and support, not just for developers.</p>
+    <ul>
+      <li><strong>External reference:</strong> IDs from the website or form submissions so you can trace records across systems.</li>
+      <li><strong>Status fields:</strong> Values such as New, Processing, Succeeded, Failed, and Archived.</li>
+      <li><strong>Timestamps:</strong> Created, last attempted, and completed times.</li>
+      <li><strong>Error message or code:</strong> Clear text about what went wrong when processing fails.</li>
+      <li><strong>Raw payload:</strong> Optional storage of the original JSON or data snapshot for forensics.</li>
+    </ul>
+    <p>This lets a non developer open a page in the ERP and see which website submissions came in, what happened to them, and which ones need attention.</p>
+
+    <h2>The Basic Flow, Website to Staging to Live</h2>
+    <p>For a typical website to ERP integration, the high level flow looks like this:</p>
+    <ol>
+      <li>A user submits a form or completes an online flow on your website.</li>
+      <li>The website does basic validation and sends a structured payload to an ERP API endpoint designed for intake.</li>
+      <li>The API writes a new record into the staging table with status New.</li>
+      <li>An ERP process picks up New records, validates them, and tries to create or update the real entities such as customers and quotes.</li>
+      <li>If processing succeeds, the staging record status is set to Succeeded and may store links to the created records.</li>
+      <li>If processing fails, the staging record status is set to Failed with an error message, and optional alerts are sent.</li>
+    </ol>
+    <p>The website does not need to know the internal outcome to remain responsive. It just needs a simple success or failure response at the API level.</p>
+
+    <h2>Handling Duplicates and Matching Logic</h2>
+    <p>One of the most powerful uses of staging tables is centralizing your matching rules.</p>
+    <ul>
+      <li>Should a web submission create a new customer or attach to an existing one.</li>
+      <li>How do you match customers, by email, tax ID, phone, or a combination.</li>
+      <li>When should a web quote update an existing open quote versus creating a new one.</li>
+    </ul>
+    <p>Instead of letting every integration make up its own rules, you can implement this logic once in the ERP process that consumes the staging table. That keeps behavior consistent regardless of whether the data came from WordPress, a portal, or another external system.</p>
+
+    <h2>Choosing What to Validate on the Website vs in the ERP</h2>
+    <p>Staging tables do not mean skipping validation on the website. They give you a layered approach.</p>
+    <ul>
+      <li><strong>Website validation:</strong> Required fields, basic formats, obvious business rules that affect user experience.</li>
+      <li><strong>ERP staging validation:</strong> Existence of related records, dimension combinations, posting rules, and financial logic.</li>
+    </ul>
+    <p>This way, users get fast feedback on simple issues, while the ERP still controls the rules that matter for data quality and accounting.</p>
+
+    <h2>How Staging Tables Help With Monitoring and Reporting</h2>
+    <p>Once you have staging tables in place, they become a natural source for integration monitoring and analytics.</p>
+    <ul>
+      <li>Daily or hourly counts of records by status, such as New, Succeeded, and Failed.</li>
+      <li>Average processing times from creation to success, which highlight performance issues.</li>
+      <li>Top error codes or messages over time, which inform where to improve inputs or rules.</li>
+      <li>Links back to original web sessions or forms to see what users tried to do.</li>
+    </ul>
+    <p>This is much easier to work with than scattered logs in multiple systems.</p>
+
+    <h2>Common Mistakes When Implementing Staging Tables</h2>
+    <p>Teams sometimes adopt staging tables but still run into avoidable problems.</p>
+    <ul>
+      <li>Using staging only for errors instead of for all records, which makes reconciliation harder.</li>
+      <li>Not storing external references, making it difficult to match website and ERP views.</li>
+      <li>Letting staging records accumulate forever without an archiving strategy.</li>
+      <li>Skipping user friendly pages for operations, forcing everything through developer tools.</li>
+    </ul>
+    <p>A little design up front avoids these issues and keeps staging tables useful for years.</p>
+
+    <h2>How This Fits With WordPress and Business Central</h2>
+    <p>For a stack that uses WordPress on the front end and Business Central as the ERP, staging tables are a natural bridge.</p>
+    <ul>
+      <li>WordPress handles forms, portals, and customer facing flows using plugins such as Gravity Forms or custom code.</li>
+      <li>Submissions are sent to Business Central via APIs that target intake endpoints, not live tables.</li>
+      <li>Business Central extensions create and manage staging tables and the processes that promote data.</li>
+      <li>Operations staff can see both intake and final records inside Business Central when they need to troubleshoot.</li>
+    </ul>
+    <p>The result is a clear separation of concerns: WordPress focuses on experience, Business Central focuses on rules and records, and staging tables connect the two safely.</p>
+
+    <h2>How Elephas Designs Staging Based Integrations</h2>
+    <p>At Elephas, we treat staging tables as first class citizens, not an afterthought.</p>
+    <ul>
+      <li>We help you define which website flows need intake entities and what fields they should include.</li>
+      <li>We design Business Central extensions that implement staging tables, validation, and promotion processes.</li>
+      <li>We build or adapt WordPress integrations to send data into these intake endpoints instead of directly into core tables.</li>
+      <li>We add basic monitoring and reporting so you can see, at a glance, whether integrations are healthy.</li>
+    </ul>
+    <p>If you are planning or cleaning up a website to ERP integration, staging tables are one of the simplest, highest leverage tools you can add to your architecture.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Staging Tables 101, The Safest Way to Integrate Your Website With an ERP",
+  "description": "Learn how staging tables make website to ERP integrations safer, more debuggable, and easier to evolve without risking your production data.",
+  "image": [
+    "https://elephas.us/assets/img/resources/staging-tables-101-website-erp-integration.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/integrations-architecture/staging-tables-101-website-erp-integration.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

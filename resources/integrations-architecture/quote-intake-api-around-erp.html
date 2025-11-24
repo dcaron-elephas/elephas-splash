@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Designing a Quote Intake API Around Your ERP | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to design a quote intake API around your ERP so website, portals, and sales tools can submit structured quotes safely and consistently.">
+  <link rel="canonical" href="https://elephas.us/resources/integrations-architecture/quote-intake-api-around-erp.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Designing a Quote Intake API Around Your ERP</h1>
+
+    <p>Most companies eventually want quotes from websites, landing pages, and sales tools to land in one place, the ERP. The mistake is wiring each source directly into ERP tables with its own rules. A better approach is to design a single quote intake API around your ERP so every channel submits quotes in a consistent, safe way.</p>
+
+    <h2>Why a Dedicated Quote Intake API</h2>
+    <p>It is tempting to let each system “speak ERP” directly. Over time you end up with multiple slightly different ways to create quotes, each with its own assumptions and field mappings.</p>
+    <p>A dedicated quote intake API gives you:</p>
+    <ul>
+      <li><strong>One front door for quotes:</strong> Websites, portals, internal tools, and partners all submit quotes the same way.</li>
+      <li><strong>Centralized rules:</strong> Validation, matching, and defaulting live in one place instead of being scattered across integrations.</li>
+      <li><strong>Safer evolution:</strong> You can change ERP internals without breaking every upstream system.</li>
+      <li><strong>Better observability:</strong> Intake requests, errors, and outcomes are tracked in a single model.</li>
+    </ul>
+
+    <h2>Layering the Design, From Outside to Inside</h2>
+    <p>Good quote intake design works in layers instead of point to point wiring.</p>
+    <ol>
+      <li><strong>External clients:</strong> WordPress forms, portals, CRMs, and other systems.</li>
+      <li><strong>Quote intake API:</strong> A stable, documented API surface that accepts quote requests.</li>
+      <li><strong>Intake staging model:</strong> Tables or entities in your ERP that capture raw requests and status.</li>
+      <li><strong>Quote creation logic:</strong> ERP code units or services that validate and transform intakes into real quotes, customers, and contacts.</li>
+      <li><strong>Downstream events:</strong> Notifications or webhooks that tell other systems a quote was created or updated.</li>
+    </ol>
+    <p>Each layer has a clear responsibility, which makes it easier to reason about and maintain.</p>
+
+    <h2>What Your Quote Intake Payload Should Include</h2>
+    <p>The intake payload does not need to mirror your ERP quote schema. It should capture the information you can realistically get from external channels.</p>
+    <ul>
+      <li><strong>Context:</strong> Source system, campaign, and channel identifiers.</li>
+      <li><strong>Contact details:</strong> Name, email, phone, and company.</li>
+      <li><strong>Request details:</strong> Products or services of interest, quantities, locations, and dates where relevant.</li>
+      <li><strong>Free text:</strong> Notes or special instructions entered by the user.</li>
+      <li><strong>Metadata:</strong> External IDs, IP, and timestamps for troubleshooting and analytics.</li>
+    </ul>
+    <p>You can map and enrich this data inside the ERP rather than forcing every client to understand internal codes and dimensions.</p>
+
+    <h2>Designing the Staging Model in Your ERP</h2>
+    <p>Inside the ERP, treat quote intake as its own entity, not just a temporary buffer.</p>
+    <ul>
+      <li><strong>Intake header:</strong> One record per request with status, timestamps, and source information.</li>
+      <li><strong>Intake lines:</strong> Line level details such as requested items, assets, or services.</li>
+      <li><strong>Status fields:</strong> New, Under Review, Converted, Rejected, and Error.</li>
+      <li><strong>Linking fields:</strong> Pointers to created customer, contact, and quote records once conversion succeeds.</li>
+      <li><strong>Error log:</strong> Last error message or code when processing fails.</li>
+    </ul>
+    <p>Operational users should be able to open a page in the ERP and see every incoming request, what happened to it, and why.</p>
+
+    <h2>Matching and Deduplication Rules</h2>
+    <p>One of the main jobs of the intake logic is deciding when to create new records versus reusing existing ones.</p>
+    <ul>
+      <li><strong>Customer matching:</strong> Decide whether to match on email domain, tax ID, phone, or a combination.</li>
+      <li><strong>Contact matching:</strong> Avoid creating duplicate contacts when people submit multiple requests.</li>
+      <li><strong>Quote matching:</strong> Update an open quote instead of creating a fresh one when appropriate.</li>
+    </ul>
+    <p>These rules should live in the ERP conversion logic, not scattered across websites and forms. That way, behavior stays consistent as new channels are added.</p>
+
+    <h2>Validation at the Edge vs in the Core</h2>
+    <p>The quote intake API gives you a clear split between what must be validated before submission and what can be enforced centrally.</p>
+    <ul>
+      <li><strong>Edge validation (website, portal, CRM):</strong> Required fields, basic formats, simple range checks, and user friendly error messages.</li>
+      <li><strong>Core validation (ERP):</strong> Price and discount rules, eligibility checks, dimension combinations, and business policies.</li>
+    </ul>
+    <p>This keeps the user experience smooth while still letting the ERP be the final authority on what is allowed.</p>
+
+    <h2>Authentication, Authorization, and Rate Limits</h2>
+    <p>Because the quote intake API touches ERP data, security matters.</p>
+    <ul>
+      <li><strong>Authentication:</strong> Use API keys, OAuth, or similar mechanisms so you know which system is calling you.</li>
+      <li><strong>Authorization:</strong> Limit what each client can do. For example, some sources may only be allowed to submit new quotes, not update existing ones.</li>
+      <li><strong>Rate limiting:</strong> Protect your ERP from spikes or misbehaving clients without dropping valid requests silently.</li>
+      <li><strong>Input validation:</strong> Sanitize any free text and enforce size limits to avoid abuse.</li>
+    </ul>
+    <p>These concerns belong in the API layer and gateway around your ERP, not in the website or forms themselves.</p>
+
+    <h2>Observability, Logs, and Support Tools</h2>
+    <p>A quote intake API is only as useful as your ability to see what it is doing.</p>
+    <ul>
+      <li>Log each intake request with a correlation ID shared across API logs and ERP staging tables.</li>
+      <li>Track counts of requests by source, status, and time window.</li>
+      <li>Provide views or dashboards for support staff to search for specific requests by email, name, or external ID.</li>
+      <li>Alert when error rates or backlogs exceed thresholds.</li>
+    </ul>
+    <p>This turns integration support from guesswork into a routine operational task.</p>
+
+    <h2>How This Fits into a WordPress plus Business Central Stack</h2>
+    <p>In a WordPress and Business Central environment, a typical pattern looks like this:</p>
+    <ul>
+      <li>WordPress (and Gravity Forms or custom forms) send JSON payloads to a quote intake API endpoint.</li>
+      <li>The API writes into Business Central quote intake staging tables using extensions and standard APIs.</li>
+      <li>Business Central processes intake records into customers, contacts, and quotes using configured rules.</li>
+      <li>Events or webhooks notify WordPress or a portal when a quote has been created or updated, if needed.</li>
+    </ul>
+    <p>This keeps your website fast and flexible while treating Business Central as the system of record for actual quotes.</p>
+
+    <h2>How Elephas Designs and Implements Quote Intake APIs</h2>
+    <p>At Elephas, we see quote intake as one of the highest leverage integration surfaces you can build.</p>
+    <ul>
+      <li>We help you define a quote intake payload that is realistic for your channels and aligned with your ERP model.</li>
+      <li>We design and implement staging tables and conversion logic inside Business Central.</li>
+      <li>We build or adapt WordPress and other client integrations to target the new intake API consistently.</li>
+      <li>We add monitoring, dashboards, and basic tools so operations staff can see and manage incoming requests without calling IT.</li>
+    </ul>
+    <p>The result is a clean, central quote intake pattern that supports growth in channels and volume without turning your ERP into a fragile tangle of one off integrations.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Designing a Quote Intake API Around Your ERP",
+  "description": "How to design a quote intake API around your ERP so website, portals, and sales tools can submit structured quotes safely and consistently.",
+  "image": [
+    "https://elephas.us/assets/img/resources/quote-intake-api-around-erp.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/integrations-architecture/quote-intake-api-around-erp.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
