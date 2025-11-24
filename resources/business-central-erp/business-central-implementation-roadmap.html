@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Business Central Implementation Roadmap, What Actually Changes in the First 12 Months | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical Business Central implementation roadmap that explains what really changes in the first 12 months, from data and integrations to processes and people.">
+  <link rel="canonical" href="https://elephas.us/resources/business-central-erp/business-central-implementation-roadmap.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Business Central Implementation Roadmap, What Actually Changes in the First 12 Months</h1>
+
+    <p>A Business Central implementation is not just a software project. It is a year of steady changes to data, processes, integrations, and how people work. This roadmap walks through the first 12 months so you can plan for reality, not just the idealized project plan.</p>
+
+    <h2>Month 0 to 2, Discovery and Planning</h2>
+    <p>Most teams think implementation starts when developers log in to the system. In practice, the real work starts earlier with discovery and planning.</p>
+    <ul>
+      <li>Clarify why you are moving, for example reporting, scaling, integrations, or compliance.</li>
+      <li>Inventory current systems, spreadsheets, and shadow processes that Business Central will replace or touch.</li>
+      <li>Identify which processes must be ready on day one and which can safely wait for a later phase.</li>
+      <li>Decide which systems will integrate with Business Central and how tightly they should be coupled.</li>
+    </ul>
+    <p>The goal in this phase is to decide what will change and what will stay the same, at least for the first release.</p>
+
+    <h2>Month 2 to 4, Data and Design</h2>
+    <p>Once the high level scope is clear, the focus turns to data and solution design.</p>
+    <ul>
+      <li>Clean, map, and transform data from legacy systems and spreadsheets.</li>
+      <li>Define chart of accounts, dimensions, and key master data such as customers, vendors, and items.</li>
+      <li>Design how orders, quotes, contracts, and invoices will flow through Business Central.</li>
+      <li>Sketch integration points with your website, CRM, and other operational systems.</li>
+    </ul>
+    <p>This is the phase where many teams discover missing data, inconsistent naming, and edge cases that were never documented. It is normal, but it needs time and honest decisions.</p>
+
+    <h2>Month 4 to 7, Build, Integrate, and Configure</h2>
+    <p>Now the project feels more like traditional implementation work.</p>
+    <ul>
+      <li>Configure Business Central for finance, sales, purchasing, inventory, and other modules you are adopting.</li>
+      <li>Build extensions and customizations where standard features are not enough.</li>
+      <li>Implement integrations, often using staging tables and APIs for safety and traceability.</li>
+      <li>Set up environments, security roles, and basic reports or dashboards.</li>
+    </ul>
+    <p>The most important design choice in this phase is where business logic lives: in Business Central, in your website or portals, or in a middleware layer. Decide consciously, instead of letting it happen by accident.</p>
+
+    <h2>Month 7 to 9, Testing, Training, and Parallel Runs</h2>
+    <p>As the build stabilizes, attention shifts to proving that the system works for real users and real data.</p>
+    <ul>
+      <li>Run realistic test scenarios using real or anonymized historical data.</li>
+      <li>Have subject matter experts walk through their day in the new system, end to end.</li>
+      <li>Test key integrations, including website forms and portals that push data into Business Central.</li>
+      <li>Start short training sessions and simple quick reference guides for different roles.</li>
+    </ul>
+    <p>Many teams benefit from a short period of parallel running, where they process some transactions in both the old and new systems to compare outcomes and build confidence.</p>
+
+    <h2>Month 9 to 10, Go Live and Stabilization</h2>
+    <p>Go live is usually a weekend. Stabilization is the next month or two.</p>
+    <ul>
+      <li>Cut over with a clear data migration and freeze plan so nothing is lost or double booked.</li>
+      <li>Have a rapid response process in place for the first weeks, including someone who can make decisions about edge cases.</li>
+      <li>Monitor integrations closely, especially automated feeds from your website, portals, and other front ends.</li>
+      <li>Track issues and small enhancements in a simple, shared backlog to avoid losing them in email threads.</li>
+    </ul>
+    <p>The goal is not perfection on day one, but a controlled ramp where issues are visible, prioritized, and addressed.</p>
+
+    <h2>Month 10 to 12, Optimization and Phase Two</h2>
+    <p>Once the dust settles, the project changes shape. You move from go live mode to continuous improvement.</p>
+    <ul>
+      <li>Retire temporary workarounds that were put in place to hit the deadline.</li>
+      <li>Optimize slow steps and wasteful handoffs that became visible after go live.</li>
+      <li>Deepen integrations, for example adding new web forms, portals, or reporting flows now that the core is stable.</li>
+      <li>Review reporting needs and design better dashboards or cubes based on real questions from leadership.</li>
+    </ul>
+    <p>This is also the moment to define a clear backlog for phase two and three, based on actual use instead of guesses.</p>
+
+    <h2>What Changes For Your Team in Year One</h2>
+    <p>A Business Central implementation changes more than screens. It affects roles, responsibilities, and decision making.</p>
+    <ul>
+      <li>Finance moves from cleanup and chasing data to reviewing and analyzing what the system produces.</li>
+      <li>Operations start to rely on one source of truth for inventory, assets, jobs, or rentals instead of multiple spreadsheets.</li>
+      <li>Sales and customer service see the same data your back office sees, if integrations and portals are designed well.</li>
+      <li>IT shifts from building one off reports to maintaining a platform, integration patterns, and environments.</li>
+    </ul>
+    <p>The biggest cultural shift is often that decisions are based on shared data instead of local spreadsheets and anecdotes.</p>
+
+    <h2>How a Partner Like Elephas Helps</h2>
+    <p>Most teams do not have a dedicated internal architect for this kind of project. A good partner helps you steer, not just configure screens.</p>
+    <ul>
+      <li>Translate business goals into a realistic 12 month roadmap with clear phases and checkpoints.</li>
+      <li>Design integrations between Business Central, your website, and other systems using safe patterns such as staging tables and events.</li>
+      <li>Balance configuration, customization, and process change so you do not over customize on day one.</li>
+      <li>Set up a governance model so changes after go live are controlled instead of chaotic.</li>
+    </ul>
+    <p>With a clear roadmap, the first year of Business Central is not just a stressful project. It becomes a structured shift toward better data, more reliable processes, and a platform you can build on for years.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Business Central Implementation Roadmap, What Actually Changes in the First 12 Months",
+  "description": "A practical Business Central implementation roadmap that explains what really changes in the first 12 months, from data and integrations to processes and people.",
+  "image": [
+    "https://elephas.us/assets/img/resources/business-central-implementation-roadmap.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/business-central-erp/business-central-implementation-roadmap.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

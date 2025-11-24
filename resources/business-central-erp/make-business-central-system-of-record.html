@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>How to Make Business Central Your System of Record Without Slowing Everything Down | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to make Business Central your system of record while keeping websites, CRM, and other systems fast, usable, and in sync.">
+  <link rel="canonical" href="https://elephas.us/resources/business-central-erp/make-business-central-system-of-record.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>How to Make Business Central Your System of Record Without Slowing Everything Down</h1>
+
+    <p>Treating Business Central as your system of record does not mean forcing every interaction through it in real time. The trick is to be clear about which data lives in Business Central, which systems rely on it, and how to keep everything in sync without turning every request into a slow ERP call.</p>
+
+    <h2>What System of Record Really Means</h2>
+    <p>System of record is one of those phrases that gets used loosely. In practical terms, a system of record is the place where a particular type of data is considered authoritative.</p>
+    <p>For Business Central, that usually means:</p>
+    <ul>
+      <li>Customers, vendors, and key master data.</li>
+      <li>Contracts, orders, invoices, and payments.</li>
+      <li>Inventory, assets, and service items.</li>
+      <li>General ledger, dimensions, and financial history.</li>
+    </ul>
+    <p>Other systems can cache or derive pieces of this data, but Business Central is where truth is reconciled.</p>
+
+    <h2>Step 1, Declare the Domains</h2>
+    <p>Start by listing your main data domains and assigning a system of record for each.</p>
+    <ul>
+      <li>Customer identity and billing data, Business Central.</li>
+      <li>Leads and early stage opportunities, CRM.</li>
+      <li>Website behavior and anonymous analytics, web stack and analytics tools.</li>
+      <li>Asset and rental status, Business Central with read only views elsewhere.</li>
+    </ul>
+    <p>Writing this down sounds simple, but it forces hard choices and avoids future arguments about who owns which fields.</p>
+
+    <h2>Step 2, Design Flows, Not One Off Integrations</h2>
+    <p>Instead of wiring systems together ad hoc, design the flows that matter most.</p>
+    <ul>
+      <li>Lead or quote from website to CRM and Business Central.</li>
+      <li>New customer onboarding from CRM to Business Central.</li>
+      <li>Contract updates from Business Central to portals and billing tools.</li>
+      <li>Service or support events back into Business Central for a full history.</li>
+    </ul>
+    <p>For each flow, be explicit about which system creates the record, which system approves or enriches it, and where it ends up for long term storage.</p>
+
+    <h2>Step 3, Use Staging Tables and Events</h2>
+    <p>One of the best ways to keep Business Central authoritative without making it a bottleneck is to use staging tables and events.</p>
+    <ul>
+      <li>Website or CRM submits new data into a Business Central staging table.</li>
+      <li>Business rules and validations run inside Business Central.</li>
+      <li>Approved records are promoted to live tables.</li>
+      <li>Events, such as quote created or contract activated, are published for other systems to consume.</li>
+    </ul>
+    <p>This pattern keeps the core data model clean while allowing other systems to move quickly and still respect Business Central rules.</p>
+
+    <h2>Step 4, Cache Smartly at the Edges</h2>
+    <p>Not every screen needs live ERP data. In fact, insisting on real time for everything usually hurts user experience.</p>
+    <ul>
+      <li>Cache read only data such as product lists or non critical status values on the website.</li>
+      <li>Update dashboards on schedules that make sense, such as every few minutes or hourly.</li>
+      <li>Reserve real time calls for operations where timing really changes outcomes, such as credit checks or inventory allocation.</li>
+    </ul>
+    <p>As long as you know when cached data is acceptable and when it is not, you can keep systems responsive without violating the system of record principle.</p>
+
+    <h2>Step 5, Make Ownership and Change Control Explicit</h2>
+    <p>A system of record is not just a database. It is also a decision about who owns certain fields and who can change them.</p>
+    <ul>
+      <li>Define which roles can edit master data in Business Central.</li>
+      <li>Decide whether external systems are allowed to update certain fields or only suggest changes.</li>
+      <li>Set up change logs so you can see who changed what, and when.</li>
+      <li>Establish a simple process for requesting structural changes to data, such as new dimensions or codes.</li>
+    </ul>
+    <p>Without this, integrations tend to introduce silent conflicts where systems fight over values.</p>
+
+    <h2>What This Looks Like in a Real Stack</h2>
+    <p>In a typical Business Central centric architecture:</p>
+    <ul>
+      <li>Business Central holds contracts, billing, and operational truth.</li>
+      <li>WordPress handles forms, content, and portals, using APIs to send data to and pull data from Business Central.</li>
+      <li>CRM manages leads and pipeline, syncing only key fields back to Business Central.</li>
+      <li>Analytics tools observe behavior but do not try to be a source of truth for customers or revenue.</li>
+    </ul>
+    <p>The integration patterns tie this together, but Business Central remains the place you go to answer questions about who owes what, which assets are where, and what is on contract.</p>
+
+    <h2>How Elephas Helps You Get There</h2>
+    <p>Aligning everything around Business Central without slowing teams down requires both technical work and facilitation.</p>
+    <ul>
+      <li>We help define the system of record for each data domain across ERP, web, and CRM.</li>
+      <li>We design integrations that use staging tables and events instead of fragile direct writes.</li>
+      <li>We build WordPress and portal experiences that are fast but still reflect ERP truth.</li>
+      <li>We document flows and ownership so new projects do not quietly undo the structure.</li>
+    </ul>
+    <p>The result is an architecture where Business Central is clearly in charge of the data it should own, while your customer facing systems stay responsive and easy to evolve.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Make Business Central Your System of Record Without Slowing Everything Down",
+  "description": "Learn how to make Business Central your system of record while keeping websites, CRM, and other systems fast, usable, and in sync.",
+  "image": [
+    "https://elephas.us/assets/img/resources/make-business-central-system-of-record.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/business-central-erp/make-business-central-system-of-record.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

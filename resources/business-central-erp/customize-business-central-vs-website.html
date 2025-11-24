@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Should You Customize Business Central or Customize Your Website, A Practical Decision Guide | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical guide to deciding whether to customize Business Central, your website, or both, with clear criteria for performance, risk, and cost.">
+  <link rel="canonical" href="https://elephas.us/resources/business-central-erp/customize-business-central-vs-website.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Should You Customize Business Central or Customize Your Website, A Practical Decision Guide</h1>
+
+    <p>Not every requirement belongs in Business Central, and not every feature belongs on your website. This guide gives you a simple way to decide where logic should live, so you avoid performance issues, upgrade pain, and integration chaos.</p>
+
+    <h2>Two Places to Put Logic, Business Central and the Web Layer</h2>
+    <p>When new requirements show up, most teams default to one of two instincts:</p>
+    <ul>
+      <li>Put it in Business Central so it is centralized and controlled.</li>
+      <li>Put it on the website so you can ship faster and avoid touching ERP.</li>
+    </ul>
+    <p>Both instincts are valid in some situations and dangerous in others. The right answer depends on what the logic does and who depends on it.</p>
+
+    <h2>Questions to Ask Before You Decide</h2>
+    <p>Use these questions as a quick triage before you open Visual Studio Code or the WordPress editor.</p>
+    <ul>
+      <li><strong>Is this logic core to financial accuracy or compliance?</strong> If yes, it usually belongs in Business Central.</li>
+      <li><strong>Does it change how customers or prospects interact with you online?</strong> If yes, it often belongs in the website or portal first.</li>
+      <li><strong>How often is this likely to change?</strong> Fast changing rules are often easier to maintain in the web layer.</li>
+      <li><strong>Does this need to work even if one system is temporarily unavailable?</strong> That may imply a decoupled or staged approach.</li>
+      <li><strong>Who owns and understands this logic day to day?</strong> If it is owned by finance or operations, keeping it in Business Central may make support easier.</li>
+    </ul>
+
+    <h2>When Customizing Business Central Makes Sense</h2>
+    <p>Customizations or extensions in Business Central are usually the right choice when the requirement touches core business rules.</p>
+    <ul>
+      <li>Pricing and discount rules that affect invoices and revenue recognition.</li>
+      <li>Approval workflows for purchases, credit limits, or contract terms.</li>
+      <li>Posting routines and dimension logic that feed your financial reporting.</li>
+      <li>Validation rules that must apply no matter where the transaction starts.</li>
+    </ul>
+    <p>In these cases, pushing the logic into Business Central keeps your system of record consistent. However, it also means you need to be careful about performance, licensing impact, and future upgrades.</p>
+
+    <h2>When Customizing the Website or Portal Is Better</h2>
+    <p>The web layer is usually the right home for logic that is about user experience, data capture, or presentation.</p>
+    <ul>
+      <li>Dynamic forms that adjust questions based on user choices.</li>
+      <li>Guided steps for quote requests, onboarding, or service tickets.</li>
+      <li>Customer portals that show Business Central data but present it in business friendly language.</li>
+      <li>Marketing landing pages that need fast iteration and A/B testing.</li>
+    </ul>
+    <p>Here, you can keep Business Central lean by treating it as the system of record, while using WordPress or another web front end to experiment and refine the experience.</p>
+
+    <h2>Patterns for Sharing Logic Safely</h2>
+    <p>Some requirements span both worlds. In those cases, patterns matter more than location.</p>
+    <ul>
+      <li><strong>Shared configuration:</strong> Store rate tables, tax rules, or other configuration in one place, and have both Business Central and the website read from it.</li>
+      <li><strong>Validation in stages:</strong> Do basic validation on the website, then enforce final rules in Business Central before posting.</li>
+      <li><strong>APIs and staging tables:</strong> Use APIs to send data into Business Central staging, where more complex logic runs, instead of duplicating everything.</li>
+      <li><strong>Feature flags:</strong> Introduce new behaviors behind flags so you can roll them out gradually across systems.</li>
+    </ul>
+
+    <h2>How to Avoid Over Customization</h2>
+    <p>The risk on the Business Central side is over customization. The risk on the website side is rebuilding half of your ERP in PHP or JavaScript.</p>
+    <ul>
+      <li>Prefer configuration and extensions over code that changes core objects.</li>
+      <li>Be suspicious of requests that essentially replicate standard functionality with cosmetic differences.</li>
+      <li>Document custom rules and where they live so future changes do not create conflicts.</li>
+      <li>Review customizations at least once a year to decide which to keep, simplify, or retire.</li>
+    </ul>
+
+    <h2>A Simple Decision Matrix</h2>
+    <p>If you want a quick rule of thumb, start here.</p>
+    <ul>
+      <li><strong>Financial truth and compliance:</strong> Business Central first.</li>
+      <li><strong>Customer experience and lead capture:</strong> Website or portal first.</li>
+      <li><strong>Operational workflows that span both:</strong> Shared patterns with staging tables and APIs.</li>
+    </ul>
+    <p>When in doubt, design the data flow and approval path on a whiteboard, then decide where each decision point belongs.</p>
+
+    <h2>How Elephas Approaches This Decision</h2>
+    <p>Because Elephas works on both Business Central and web platforms like WordPress, we are not motivated to push everything into one side. Instead, we help you:</p>
+    <ul>
+      <li>Clarify what really needs to live in Business Central and what is better handled in the web layer.</li>
+      <li>Design web experiences that respect the rules enforced by your ERP, instead of fighting them.</li>
+      <li>Use integration patterns that keep systems decoupled but consistent, such as staging tables and event driven updates.</li>
+      <li>Plan for upgrades and future changes from day one, so today’s decisions do not become tomorrow’s blockers.</li>
+    </ul>
+    <p>The result is a cleaner split between systems, fewer surprises at upgrade time, and a stack that can evolve without constant rewrites.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Should You Customize Business Central or Customize Your Website, A Practical Decision Guide",
+  "description": "A practical guide to deciding whether to customize Business Central, your website, or both, with clear criteria for performance, risk, and cost.",
+  "image": [
+    "https://elephas.us/assets/img/resources/customize-business-central-vs-website.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/business-central-erp/customize-business-central-vs-website.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
