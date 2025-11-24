@@ -5,6 +5,7 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
   http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+  <!-- Core site pages -->
   <url>
     <loc>https://elephas.us/</loc>
     <priority>1.00</priority>
@@ -53,6 +54,7 @@
     <changefreq>monthly</changefreq>
   </url>
 
+  <!-- Business Central & ERP resources -->
   <url>
     <loc>https://elephas.us/resources/business-central-erp/business-central-wordpress-integration-blueprint.html</loc>
     <priority>0.8</priority>
@@ -60,11 +62,67 @@
   </url>
 
   <url>
+    <loc>https://elephas.us/resources/business-central-erp/business-central-implementation-roadmap.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/business-central-erp/business-central-integration-pitfalls.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/business-central-erp/customize-business-central-vs-website.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/business-central-erp/make-business-central-system-of-record.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/business-central-erp/quickbooks-to-business-central-when-to-switch.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Integrations & Architecture resources -->
+  <url>
     <loc>https://elephas.us/resources/integrations-architecture/calm-integration-architecture-around-your-erp.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
+  <url>
+    <loc>https://elephas.us/resources/integrations-architecture/staging-tables-101-website-erp-integration.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/integrations-architecture/realtime-vs-batch-integrations.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/integrations-architecture/quote-intake-api-around-erp.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/integrations-architecture/integration-logging-and-monitoring.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Web & WordPress resources -->
   <url>
     <loc>https://elephas.us/resources/web-wordpress/benefits-of-organic-seo.html</loc>
     <priority>0.8</priority>
@@ -72,11 +130,79 @@
   </url>
 
   <url>
+    <loc>https://elephas.us/resources/web-wordpress/choose-wordpress-hosting-business-critical.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/web-wordpress/core-web-vitals-for-business-owners.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/web-wordpress/gravity-forms-to-erp-integration-patterns.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/web-wordpress/consent-based-script-loading.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/web-wordpress/service-pages-that-rank-and-convert.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/web-wordpress/types-of-seo.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Guides & Checklists resources -->
+  <url>
     <loc>https://elephas.us/resources/guides-checklists/erp-integration-readiness-checklist.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
+  <url>
+    <loc>https://elephas.us/resources/guides-checklists/analytics-tracking-setup-checklist-b2b-website.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/guides-checklists/business-central-partner-vendor-selection-checklist.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/guides-checklists/content-brief-template-for-seo-pages.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/guides-checklists/custom-wordpress-plugin-vs-saas.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/guides-checklists/website-redesign-readiness-checklist-erp-businesses.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Legal pages -->
   <url>
     <loc>https://elephas.us/privacy-policy.html</loc>
     <priority>0.5</priority>
