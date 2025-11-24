@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>ERP Integration Readiness Checklist: 30 Questions to Answer Before You Connect Systems | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Use this ERP integration readiness checklist to align goals, clean data, and avoid surprises before you connect WordPress, CRM, and other systems.">
+  <link rel="canonical" href="https://elephas.us/resources/guides-checklists/erp-integration-readiness-checklist.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<!-- Header Include -->
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+    <h1>ERP Integration Readiness Checklist: 30 Questions to Answer Before You Connect Systems</h1>
+
+    <p>Most integration projects fail early, not because of bad tech, but because expectations, data, and ownership are fuzzy. This checklist walks you through strategy, data, process, and technical questions to answer before you connect your ERP to WordPress, your CRM, or anything else. The goal is fewer surprises, cleaner data, and a rollout you do not have to rescue at the last minute.</p>
+
+    <h2>How to Use This Checklist</h2>
+    <p>Do not treat this as homework for IT alone. This is a cross team checklist:</p>
+    <ul>
+      <li><strong>Leadership and owners:</strong> strategy, priorities, budget</li>
+      <li><strong>Operations:</strong> real workflows, exceptions, and edge cases</li>
+      <li><strong>Finance:</strong> billing, revenue recognition, approvals</li>
+      <li><strong>IT and vendors:</strong> systems, APIs, security, implementation details</li>
+    </ul>
+    <p>For each question, give yourself a quick score:</p>
+    <ul>
+      <li><strong>Yes or solid:</strong> we have this defined and documented</li>
+      <li><strong>Partial:</strong> we sort of know, but it is not consistent or written down</li>
+      <li><strong>No or unknown:</strong> this is not defined yet</li>
+    </ul>
+    <p>Anywhere you see a lot of partial or no or unknown answers is where your integration will hurt later if you do not address it now.</p>
+
+    <h2>1. Strategy and Goals, Why Are We Doing This?</h2>
+    <ol>
+      <li><strong>What are the top three business outcomes we expect from this integration?</strong><br>Examples include fewer manual re entries, faster quote turnaround, fewer invoicing errors.</li>
+      <li><strong>Which metrics will we track to know if it is working?</strong><br>For example quote to order time, error rate, number of manual touches, response time.</li>
+      <li><strong>Which workflows are phase one, and which are explicitly not in scope yet?</strong><br>Be honest, scope creep usually starts right here.</li>
+      <li><strong>Whose life gets better first?</strong><br>Sales, operations, accounting, customers? If the answer is everyone, that is usually a red flag.</li>
+      <li><strong>What do we stop doing once the integration is live?</strong><br>If nothing gets removed, you are probably just adding more complexity.</li>
+    </ol>
+
+    <h2>2. Data and Source of Truth</h2>
+    <ol start="6">
+      <li><strong>For each key data type, do we know the system of record?</strong><br>This includes:
+        <ul>
+          <li>Customers</li>
+          <li>Contacts</li>
+          <li>Quotes and orders</li>
+          <li>Contracts and subscriptions</li>
+          <li>Inventory and assets</li>
+          <li>Invoices and payments</li>
+        </ul>
+      </li>
+      <li><strong>Is there a shared definition for customer, lead, quote, and order?</strong><br>Or do sales, operations, and finance all mean slightly different things when they use those words?</li>
+      <li><strong>Where are duplicates currently creeping in?</strong><br>For example multiple CRMs, spreadsheets, imports, manual entry in ERP.</li>
+      <li><strong>Do we have a basic data cleanup plan before we sync?</strong><br>This might include:
+        <ul>
+          <li>Merging duplicate records</li>
+          <li>Normalizing country and state formats</li>
+          <li>Standardizing key fields like industry or segment</li>
+        </ul>
+      </li>
+      <li><strong>Do we understand which fields are required versus nice to have in each system?</strong><br>This matters a lot when designing forms and automation.</li>
+      <li><strong>Do we have consistent IDs or keys to match records between systems?</strong><br>For example customer IDs, contract numbers, or asset IDs.</li>
+    </ol>
+
+    <h2>3. Processes and Ownership</h2>
+    <ol start="12">
+      <li><strong>Is there a documented happy path for each main workflow we want to integrate?</strong><br>For example, quote requested, reviewed, approved, becomes order in ERP.</li>
+      <li><strong>Do we know the top three to five exception paths?</strong><br>Examples include credit hold, missing information, special pricing, regulatory checks.</li>
+      <li><strong>For each workflow, who is the process owner?</strong><br>This should not be IT, it should be someone from the business side who cares about outcomes.</li>
+      <li><strong>Do we have clear approval rules?</strong><br>Who can approve discounts, overrides, special payment terms, and non standard contracts?</li>
+      <li><strong>Do we know which human steps still exist after integration?</strong><br>The goal is not full automation at all costs, some steps should stay manual but consistent.</li>
+      <li><strong>Do we have a plan for training and change management?</strong><br>This could be short guides, cheat sheets, or simple internal documentation.</li>
+    </ol>
+
+    <h2>4. Systems, APIs, and Technical Fit</h2>
+    <ol start="18">
+      <li><strong>Do all involved systems have a realistic integration path?</strong><br>This might be through APIs such as REST or OData, file based imports and exports, or connectors and middleware.</li>
+      <li><strong>Do we know which integration patterns we will use?</strong><br>For example:
+        <ul>
+          <li>Real time API calls</li>
+          <li>Staging tables in ERP</li>
+          <li>Webhooks or event driven messaging</li>
+          <li>Nightly or hourly sync for some data</li>
+        </ul>
+      </li>
+      <li><strong>Is there a clear limit on cleverness?</strong><br>Where do we say, we are not building a custom enterprise service bus from scratch for this project?</li>
+      <li><strong>Do we know which system validates what?</strong><br>For example, WordPress validates basic fields and structure, while the ERP enforces pricing, credit rules, and inventory constraints.</li>
+      <li><strong>Do we have non production environments for testing?</strong><br>For example an ERP sandbox, a staging website, and test data that is realistic but safe.</li>
+      <li><strong>Is logging and tracing part of the plan from day one?</strong><br>Where can someone see what just failed, whether this record made it to the ERP, and why a quote was rejected?</li>
+    </ol>
+
+    <h2>5. Security, Compliance, and Risk</h2>
+    <ol start="24">
+      <li><strong>Do we have a clear model for who can see what in each system?</strong><br>This includes internal roles like sales, operations, and finance, as well as external users such as customers and partners.</li>
+      <li><strong>Is sensitive data minimized in transit and at rest?</strong><br>Do we really need to sync every field, or can we keep certain data ERP only?</li>
+      <li><strong>Have we considered regulatory constraints?</strong><br>Depending on your business this may include data protection and privacy regulations, payment security rules, or industry specific requirements.</li>
+      <li><strong>Is there a clear plan for authentication and access control between systems?</strong><br>This could involve API keys, OAuth or service accounts, and IP allowlists, VPN, or private endpoints.</li>
+    </ol>
+
+    <h2>6. WordPress and Front End Considerations</h2>
+    <ol start="28">
+      <li><strong>Do we know which data will appear on the website versus staying in the ERP?</strong><br>Examples include available products or assets, contract summaries, and customer portal information.</li>
+      <li><strong>Are we designing forms and flows for real users, not just for the data schema?</strong><br>Are we asking for the minimum required information and collecting the rest later when it makes sense?</li>
+      <li><strong>Do we have a plan for failure states in the user interface?</strong><br>For example, what happens if the ERP is down or slow, if some items succeed and others fail, or if a request times out?</li>
+    </ol>
+
+    <h2>Scoring Yourself, Lightweight but Useful</h2>
+    <p>You do not need a formal maturity model here, but a quick self score helps:</p>
+    <ul>
+      <li><strong>Zero to ten solid answers:</strong> you are still in the stage where you should stop and design this before writing code or signing statements of work.</li>
+      <li><strong>Eleven to twenty two solid answers:</strong> you are in decent shape, but there are land mines. Flag your partial and no or unknown areas as explicit risks in your plan.</li>
+      <li><strong>Twenty three to thirty solid answers:</strong> you are ahead of most teams. The challenge now is maintaining this discipline for future phases and new integrations.</li>
+    </ul>
+    <p>The point is not a perfect score. The point is to avoid surprises.</p>
+
+    <h2>Where a Partner Like Elephas Fits In</h2>
+    <p>A lot of this checklist lives in the overlap between business strategy, operations reality, ERP constraints, web and user experience, and integration patterns. That overlap is where projects most often fall apart, or quietly succeed for years.</p>
+    <p>A good partner should help you:</p>
+    <ul>
+      <li>Translate business goals into concrete workflows and data flows.</li>
+      <li>Choose sane, repeatable integration patterns around your ERP.</li>
+      <li>Implement web and WordPress, ERP, and integration pieces in a coordinated way.</li>
+      <li>Set up logging, monitoring, and documentation so the integration is maintainable.</li>
+    </ul>
+    <p>The goal is not to build the most complex architecture possible. It is to build something simple enough to understand and robust enough to trust.</p>
+
+    <h2>What to Do Next</h2>
+    <p>If you read this and had a few moments of concern, that is useful information. Use it. Here is a practical sequence.</p>
+    <ul>
+      <li>Share this checklist with leadership, operations, finance, and IT.</li>
+      <li>Answer the questions honestly, especially the ones that feel uncomfortable.</li>
+      <li>Turn your biggest partial or no or unknown answers into a short, prioritized preparation list before any development starts.</li>
+    </ul>
+    <p>Once you have done that work, then start talking about tools, middleware, and custom plugins. You will spend less, move faster, and sleep better.</p>
+  </div>
+</article>
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ERP Integration Readiness Checklist: 30 Questions to Answer Before You Connect Systems",
+  "description": "Use this ERP integration readiness checklist to align goals, clean data, and avoid surprises before you connect WordPress, CRM, and other systems.",
+  "image": [
+    "https://elephas.us/assets/img/resources/erp-integration-readiness-checklist.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/guides-checklists/erp-integration-readiness-checklist.html"
+  }
+}
+</script>
+
+<!-- Footer Include -->
+<div data-include="partials/footer.html"></div>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
