@@ -60,7 +60,19 @@
   </url>
 
   <url>
+    <loc>https://elephas.us/resources/integrations-architecture/calm-integration-architecture-around-your-erp.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
     <loc>https://elephas.us/resources/web-wordpress/benefits-of-organic-seo.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/guides-checklists/erp-integration-readiness-checklist.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
