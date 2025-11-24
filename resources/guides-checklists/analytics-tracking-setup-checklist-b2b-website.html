@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Analytics Tracking Setup Checklist for a B2B Website | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical checklist to set up analytics tracking for a B2B website, from goals and events to forms, UTMs, consent, and QA.">
+  <link rel="canonical" href="https://elephas.us/resources/guides-checklists/analytics-tracking-setup-checklist-b2b-website.html">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79H477PVKN');
+  </script>
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Analytics Tracking Setup Checklist for a B2B Website</h1>
+
+    <p>This checklist is for B2B teams that want trustworthy analytics instead of mystery numbers. It walks through the decisions and setup steps required to track leads, form submissions, and key actions on a B2B site using tools like Google Analytics, Google Tag Manager, and your CRM or ERP integrations.</p>
+
+    <h2>1. Align on Goals And Owners</h2>
+    <p>Before you touch any tags, confirm what you are measuring and who is responsible for it.</p>
+    <ul>
+      <li>List your primary website goals, for example qualified leads, demo requests, quote requests, logins, resource downloads.</li>
+      <li>Identify secondary goals such as newsletter signups, webinar registrations, or content engagement.</li>
+      <li>Assign an owner for analytics configuration and an owner for reporting and interpretation. These may be different people.</li>
+      <li>Decide which systems are sources of truth for leads and revenue, for example CRM or ERP rather than just the analytics tool.</li>
+    </ul>
+
+    <h2>2. Inventory Key Pages And Conversion Points</h2>
+    <p>Analytics should reflect the structure of your site and your funnel.</p>
+    <ul>
+      <li>List high intent pages, for example pricing, service pages, industry pages.</li>
+      <li>List all lead forms, quote forms, and contact forms with their URLs and form IDs.</li>
+      <li>Identify thank you pages or confirmation states for each form.</li>
+      <li>Note any other important interactions, for example clicks on phone numbers, email links, or chat widgets.</li>
+    </ul>
+
+    <h2>3. Set Up Or Verify Your GA4 Property</h2>
+    <p>Most B2B sites will use Google Analytics 4 for behavioral data.</p>
+    <ul>
+      <li>Create or confirm your GA4 property and web data stream.</li>
+      <li>Check that the correct domain and any subdomains are configured.</li>
+      <li>Review data retention settings and adjust if you need longer histories for B2B cycles.</li>
+      <li>Link GA4 to Google Search Console and Google Ads if applicable.</li>
+    </ul>
+
+    <h2>4. Create A Tag Manager Container</h2>
+    <p>Tag managers make it easier to manage scripts without editing theme files constantly.</p>
+    <ul>
+      <li>Create a container in Google Tag Manager or your chosen tag manager for the main website.</li>
+      <li>Install the container code in your WordPress theme or via a lightweight plugin.</li>
+      <li>Confirm that the container loads on all public pages and that preview mode works.</li>
+      <li>Plan which tags will live in the tag manager versus directly in templates, for example critical consent banners may stay in code.</li>
+    </ul>
+
+    <h2>5. Define Events And Conversions For A B2B Funnel</h2>
+    <p>Events should mirror your lead journey, not just random clicks.</p>
+    <ul>
+      <li>List standard events such as page_view and scroll_depth that may already be collected.</li>
+      <li>Design custom events for form submissions, quote requests, demo requests, and key resource downloads.</li>
+      <li>Agree on naming conventions, for example <code>lead_form_submit</code>, <code>quote_request_submit</code>, <code>resource_download</code>.</li>
+      <li>Map each custom event to a GA4 conversion where it represents a meaningful step in the funnel.</li>
+    </ul>
+
+    <h2>6. Implement Form Tracking</h2>
+    <p>For most B2B sites, forms are the main conversion mechanism.</p>
+    <ul>
+      <li>For WordPress forms such as Gravity Forms, identify form IDs and confirmation behaviors.</li>
+      <li>Decide if you will track via thank you page views, form submission events, or both.</li>
+      <li>In your tag manager, set up triggers that fire on successful form submissions, not just button clicks.</li>
+      <li>Send structured event parameters, for example form_name, lead_type, or service_interest, to support better reporting.</li>
+    </ul>
+
+    <h2>7. Set UTM And Channel Naming Standards</h2>
+    <p>Without consistent campaign tags, channel reports get messy fast.</p>
+    <ul>
+      <li>Define standard values for <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, and optionally <code>utm_content</code>.</li>
+      <li>Create a simple reference sheet so sales and marketing use the same terms for email, paid social, paid search, and partner referrals.</li>
+      <li>Document how offline campaigns or sales generated links should be tagged.</li>
+      <li>Store this standard in a shared location so new campaigns stay consistent over time.</li>
+    </ul>
+
+    <h2>8. Connect Analytics To CRM Or ERP Where Possible</h2>
+    <p>B2B decisions rarely happen in one session. Stitching analytics to CRM or ERP data helps you evaluate the full funnel.</p>
+    <ul>
+      <li>Decide which identifiers can bridge systems, for example form hidden fields for campaign codes or CRM lead IDs.</li>
+      <li>Explore CRM integrations or exports that let you tie closed deals back to original channels or campaigns.</li>
+      <li>Align definitions of a qualified lead and opportunity between marketing and sales so metrics match CRM stages.</li>
+      <li>Ensure any server side tracking or integrations respect consent and privacy choices.</li>
+    </ul>
+
+    <h2>9. Implement Consent And Privacy Controls</h2>
+    <p>Analytics should respect user choices and regional regulations.</p>
+    <ul>
+      <li>Choose a consent banner or preference center approach that fits your legal requirements.</li>
+      <li>Decide which scripts are strictly necessary versus analytics or marketing categories.</li>
+      <li>Configure your tag manager or template logic so analytics tags only fire when consent is granted where required.</li>
+      <li>Update your privacy policy to explain what you collect, why, and how users can manage their data.</li>
+    </ul>
+
+    <h2>10. QA The Implementation</h2>
+    <p>Before you trust any numbers, test the setup end to end.</p>
+    <ul>
+      <li>Use tag manager preview mode or browser developer tools to confirm events fire as expected.</li>
+      <li>Submit test leads through each important form and verify that events and conversions appear in GA4 debug and real time views.</li>
+      <li>Check that channel and campaign information flows correctly, including UTM parameters.</li>
+      <li>Confirm that consent choices block or allow analytics scripts as designed.</li>
+      <li>Test across key browsers, devices, and typical user flows such as mobile visitors landing on ad driven pages.</li>
+    </ul>
+
+    <h2>11. Set Up Dashboards And Regular Reviews</h2>
+    <p>Tracking is only useful if someone looks at it and acts on it.</p>
+    <ul>
+      <li>Define a small set of core metrics for leadership, for example qualified leads by channel, cost per lead, and conversion rate by key pages.</li>
+      <li>Set up dashboards in GA4, Looker Studio, or your BI tool that show these metrics without constant manual exports.</li>
+      <li>Schedule a recurring review, for example monthly, to walk through trends and anomalies with sales and marketing.</li>
+      <li>Capture questions that analytics cannot yet answer and feed them back into your tracking roadmap.</li>
+    </ul>
+
+    <h2>How Elephas Can Help</h2>
+    <p>Elephas sits at the intersection of B2B web, analytics, and back office systems. That means we can help you set up tracking that works across the full lead journey, not just the landing page.</p>
+    <ul>
+      <li>We translate your sales and marketing process into a clear event and conversion model.</li>
+      <li>We implement GA4 and tag manager setups that are tailored to B2B lead funnels, not generic ecommerce defaults.</li>
+      <li>We connect website events to CRM or ERP data where appropriate so you can see which channels drive real opportunities.</li>
+      <li>We document the setup and train your team so you can maintain and extend tracking without starting over each time.</li>
+    </ul>
+    <p>The result is analytics you can rely on when you make decisions about campaigns, content, and website changes, instead of dashboards that look impressive but do not match what is happening in the business.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Analytics Tracking Setup Checklist for a B2B Website",
+  "description": "A practical checklist to set up analytics tracking for a B2B website, from goals and events to forms, UTMs, consent, and QA.",
+  "image": [
+    "https://elephas.us/assets/img/resources/analytics-tracking-setup-checklist-b2b-website.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/guides-checklists/analytics-tracking-setup-checklist-b2b-website.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
