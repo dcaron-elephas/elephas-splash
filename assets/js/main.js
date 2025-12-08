@@ -232,3 +232,64 @@
     finally{ btn.disabled = false; btn.textContent = original; }
   });
 })();
+  /**
+   * Form redirect
+   */
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const statusEl = document.getElementById('form-status');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Use built-in validation even though form has novalidate
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    if (statusEl) {
+      statusEl.textContent = 'Sending...';
+      statusEl.classList.remove('ok', 'err');
+    }
+
+    fetch(form.action, {
+      method: form.method,
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+    .then(function (response) {
+      if (response.ok) {
+        // Optional: brief visual success state
+        if (statusEl) {
+          statusEl.textContent = 'Message sent, redirecting...';
+          statusEl.classList.add('ok');
+        }
+        window.location.href = '/thank-you.html';
+      } else {
+        return response.json().catch(function () { return {}; }).then(function (data) {
+          let message = 'There was a problem submitting the form. Please try again.';
+          if (data.errors && data.errors.length) {
+            message = data.errors.map(function (err) { return err.message; }).join(', ');
+          }
+          if (statusEl) {
+            statusEl.textContent = message;
+            statusEl.classList.add('err');
+          } else {
+            alert(message);
+          }
+        });
+      }
+    })
+    .catch(function () {
+      if (statusEl) {
+        statusEl.textContent = 'Network error. Please try again.';
+        statusEl.classList.add('err');
+      } else {
+        alert('Network error. Please try again.');
+      }
+    });
+  });
+});
