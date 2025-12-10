@@ -267,6 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
           statusEl.textContent = 'Message sent, redirecting...';
           statusEl.classList.add('ok');
         }
+        gtag_report_conversion();
         window.location.href = '/thank-you.html';
       } else {
         return response.json().catch(function () { return {}; }).then(function (data) {
