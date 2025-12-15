@@ -1,21 +1,21 @@
-// master.js
+// assets/js/head-main.js
 
 (function (global) {
   /**
-   * Inject raw HTML markup into <head>, executing <script> tags.
+   * Inject raw HTML into <head>, executing scripts.
    */
   function injectHeadSnippet(html) {
-    if (!html) return;
+    if (!html || !document.head) return;
 
     var container = document.createElement('div');
     container.innerHTML = html;
 
-    // Move <meta>, <link>, and <style> tags to <head>
+    // Move <meta>, <link>, <style> into <head>
     container.querySelectorAll('meta, link, style').forEach(function (node) {
       document.head.appendChild(node);
     });
 
-    // Recreate <script> tags so they actually execute
+    // Recreate <script> tags so they execute
     container.querySelectorAll('script').forEach(function (oldScript) {
       var script = document.createElement('script');
 
@@ -24,9 +24,9 @@
         script.setAttribute(attr.name, attr.value);
       });
 
-      // Inline script content
+      // Inline JS
       if (!script.src) {
-        script.text = oldScript.textContent;
+        script.text = oldScript.textContent || '';
       }
 
       document.head.appendChild(script);
@@ -34,29 +34,31 @@
   }
 
   /**
-   * Public API: load a tracking snippet file into <head>.
-   * Call this from a tiny inline snippet on each page.
+   * Public API – load a tracking partial into <head>.
+   * Example: loadTrackingSnippet('/partials/tracking-snippet.html');
    */
   function loadTrackingSnippet(url) {
     if (!url) return;
 
-    // Prevent double-injection per URL
+    // Prevent double load per URL
     var flagKey = '__HEAD_SNIPPET_LOADED__' + url;
     if (global[flagKey]) return;
     global[flagKey] = true;
 
     fetch(url, { cache: 'no-cache' })
       .then(function (resp) {
-        if (!resp.ok) throw new Error('Failed to load head snippet: ' + resp.status);
+        if (!resp.ok) {
+          throw new Error('Failed to load head snippet: ' + resp.status);
+        }
         return resp.text();
       })
       .then(injectHeadSnippet)
       .catch(function (err) {
-        // Silent for users, visible in console for you
+        // Only complain in console so users don’t see noise
         console.warn(err);
       });
   }
 
-  // Expose globally so pages can call it
+  // Expose globally
   global.loadTrackingSnippet = loadTrackingSnippet;
 })(window);
