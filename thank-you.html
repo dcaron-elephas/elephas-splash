@@ -27,16 +27,21 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag('config', 'G-79H477PVKN');
-  </script>
-  <script>
+  // GA4
+  gtag('config', 'G-79H477PVKN');
+  // Google Ads base config
+  gtag('config', 'AW-990445102');
+</script>
+
+<script>
+  // Submit Contact Form conversion
   gtag('event', 'conversion', {
     'send_to': 'AW-990445102/UNiBCNDf_s4bEK78og9D'
   });
