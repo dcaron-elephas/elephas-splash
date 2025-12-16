@@ -315,7 +315,10 @@ margin-top:30px;
   .header .logo {
     order: 1;
   }
-
+.header .logo img {
+width:160px;
+height: auto !important;
+}
   .header .btn-getstarted {
     order: 2;
     margin: 0 15px 0 0;
