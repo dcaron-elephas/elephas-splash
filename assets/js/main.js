@@ -22,42 +22,64 @@
 
   document.addEventListener('scroll', toggleScrolled);
   window.addEventListener('load', toggleScrolled);
-
   /**
-   * Mobile nav toggle
+   * Mobile nav: init once elements exist
    */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  let mobileNavInitialized = false;
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+  function initMobileNavWhenReady() {
+    if (mobileNavInitialized) return;
+
+    const body = document.querySelector('body');
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+
+    if (!body || !mobileNavToggleBtn) {
+      // Header not injected yet – try again shortly
+      setTimeout(initMobileNavWhenReady, 100);
+      return;
+    }
+
+    mobileNavInitialized = true;
+
+    function mobileNavToogle() {
+      body.classList.toggle('mobile-nav-active');
+      mobileNavToggleBtn.classList.toggle('bi-list');
+      mobileNavToggleBtn.classList.toggle('bi-x');
+    }
+
+    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+
+    /**
+     * Hide mobile nav on same-page/hash links
+     */
+    document.querySelectorAll('#navmenu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (body.classList.contains('mobile-nav-active')) {
+          mobileNavToogle();
+        }
+      });
+    });
+
+    /**
+     * Toggle mobile nav dropdowns
+     */
+    document.querySelectorAll('.navmenu .toggle-dropdown').forEach(function (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        this.parentNode.classList.toggle('active');
+
+        const dropdown = this.parentNode.nextElementSibling;
+        if (dropdown) {
+          dropdown.classList.toggle('dropdown-active');
+        }
+
+        e.stopImmediatePropagation();
+      });
+    });
   }
-  if (mobileNavToggleBtn) { mobileNavToggleBtn.addEventListener('click', mobileNavToogle); }
 
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    if (navmenu) navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
-    });
-
-  });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    if (navmenu) navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
+  // Start polling as soon as main.js loads
+  initMobileNavWhenReady();
 
   /**
    * Preloader
@@ -209,32 +231,7 @@
 
 })();
 
-// Progressive enhancement: AJAX submit to Formspree
-(function(){
-  var form = document.getElementById('contact-form');
-  var status = document.getElementById('form-status');
-  if(!form) return;
-  if (form) form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    var hp = form.querySelector('#website'); if (hp && hp.value) return;
-    var btn = form.querySelector('button[type="submit"]');
-    var original = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
-    status.className = 'status'; status.textContent = '';
-    try{
-      var res = await fetch(form.action, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
-      if(res.ok){ form.reset(); status.classList.add('ok'); status.textContent = 'Thanks! We\'ll be in touch shortly.'; }
-      else{
-        var msg = 'Oops—something went wrong. Please try again.';
-        try{ var out = await res.json(); if(out && out.errors){ msg = out.errors.map(function(e){return e.message}).join(', '); } }catch(_){}
-        status.classList.add('err'); status.textContent = msg;
-      }
-    }catch(_){ status.classList.add('err'); status.textContent = 'Network error—please try again.'; }
-    finally{ btn.disabled = false; btn.textContent = original; }
-  });
-})();
-  /**
-   * Form redirect
-   */
+// Contact form: AJAX submit + redirect + optional Google Ads conversion
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -244,53 +241,82 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    // Use built-in validation even though form has novalidate
-    if (!form.checkValidity()) {
-      form.reportValidity();
+    // Honeypot spam trap
+    const hp = form.querySelector('#website');
+    if (hp && hp.value) {
+      // Bot – silently bail
       return;
     }
 
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn ? btn.textContent : '';
+
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+    }
+
     if (statusEl) {
-      statusEl.textContent = 'Sending...';
-      statusEl.classList.remove('ok', 'err');
+      statusEl.className = 'status';
+      statusEl.textContent = '';
     }
 
     fetch(form.action, {
-      method: form.method,
+      method: 'POST',
       headers: { 'Accept': 'application/json' },
       body: new FormData(form)
     })
-    .then(function (response) {
-      if (response.ok) {
-        // Optional: brief visual success state
-        if (statusEl) {
-          statusEl.textContent = 'Message sent, redirecting...';
-          statusEl.classList.add('ok');
+      .then(function (response) {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = originalText || 'Send Message';
         }
-        gtag_report_conversion();
-        window.location.href = '/thank-you.html';
-      } else {
-        return response.json().catch(function () { return {}; }).then(function (data) {
-          let message = 'There was a problem submitting the form. Please try again.';
-          if (data.errors && data.errors.length) {
-            message = data.errors.map(function (err) { return err.message; }).join(', ');
-          }
+
+        if (response.ok) {
           if (statusEl) {
-            statusEl.textContent = message;
-            statusEl.classList.add('err');
-          } else {
-            alert(message);
+            statusEl.textContent = 'Message sent, redirecting...';
+            statusEl.classList.add('ok');
           }
-        });
-      }
-    })
-    .catch(function () {
-      if (statusEl) {
-        statusEl.textContent = 'Network error. Please try again.';
-        statusEl.classList.add('err');
-      } else {
-        alert('Network error. Please try again.');
-      }
-    });
+
+          // If Google Ads helper exists, let it handle conversion + optional redirect
+          try {
+            if (typeof gtag_report_conversion === 'function') {
+              // Pass thank-you URL if your gtag_report_conversion is written that way
+              gtag_report_conversion('/thank-you.html');
+              return;
+            }
+          } catch (e) {
+            // Ignore and fall back to normal redirect
+          }
+
+          // Normal redirect to thank-you page
+          window.location.href = '/thank-you.html';
+        } else {
+          return response.json().catch(function () { return {}; }).then(function (data) {
+            let message = 'There was a problem submitting the form. Please try again.';
+            if (data.errors && data.errors.length) {
+              message = data.errors.map(function (err) { return err.message; }).join(', ');
+            }
+            if (statusEl) {
+              statusEl.textContent = message;
+              statusEl.classList.add('err');
+            } else {
+              alert(message);
+            }
+          });
+        }
+      })
+      .catch(function () {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = originalText || 'Send Message';
+        }
+        if (statusEl) {
+          statusEl.textContent = 'Network error. Please try again.';
+          statusEl.classList.add('err');
+        } else {
+          alert('Network error. Please try again.');
+        }
+      });
   });
 });
