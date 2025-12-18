@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Business-Critical Website Launch Checklist (with Integrations and Analytics) | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical website launch checklist for business-critical sites, covering content, redirects, integrations, analytics, performance, and post-launch monitoring so you can go live with confidence." href="">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // GA4
+    gtag('config', 'G-79H477PVKN');
+    // Google Ads
+    gtag('config', 'AW-990445102');
+  </script>
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1600525836687823');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1600525836687823&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Business-Critical Website Launch Checklist (with Integrations and Analytics)</h1>
+
+    <p>Launching a new site when it is the backbone of your marketing, lead generation, or customer portal is very different from launching a simple brochure site. It is not just about how it looks. It is about whether forms submit, tracking works, redirects are clean, and key integrations behave when real traffic hits.</p>
+
+    <p>This checklist is for teams launching business-critical sites, especially when the site connects to CRMs, ERPs, or payment systems and needs analytics you can trust from day one. Use it to move from “we think it is ready” to “we have systematically checked the things that can hurt us most.”</p>
+
+    <h2>How to Use This Checklist</h2>
+
+    <p>You can treat this as a linear list, but it is more useful to think in phases:</p>
+
+    <ul>
+      <li><strong>Content and UX readiness</strong> is the foundation</li>
+      <li><strong>Technical and integration readiness</strong> makes the site usable for the business</li>
+      <li><strong>Analytics, SEO, and performance readiness</strong> make traffic and leads measurable</li>
+      <li><strong>Launch day plan and post-launch monitoring</strong> keep surprises survivable</li>
+    </ul>
+
+    <p>Work through the sections with the people who actually own each area, rather than pushing everything on one person the week of launch.</p>
+
+    <h2>1. Content and UX Readiness</h2>
+
+    <h3>Core pages and flows are complete</h3>
+
+    <ul>
+      <li>All primary pages are in place, including home, key services, about, contact, and any sector or solution pages</li>
+      <li>Resource or blog index pages work and show content in a sensible order</li>
+      <li>Legal pages are present and linked in the footer, including privacy policy and terms</li>
+      <li>404 page is branded and helpful, not a generic server error</li>
+    </ul>
+
+    <h3>Copy and visuals are launch ready</h3>
+
+    <ul>
+      <li>Copy has been proofread for typos and obvious inconsistencies</li>
+      <li>Forms, buttons, and calls to action use clear, specific language</li>
+      <li>Images are properly sized and compressed, with alt text for important visuals</li>
+      <li>Metadata such as page titles and meta descriptions exist for key pages</li>
+    </ul>
+
+    <h3>Navigation is clear and stable</h3>
+
+    <ul>
+      <li>Main navigation reflects your primary user journeys, not internal team structure</li>
+      <li>Mobile navigation is tested on real devices, including opening and closing behavior</li>
+      <li>Footer navigation gives fast access to high trust pages and support</li>
+    </ul>
+
+    <h2>2. Technical and Integration Readiness</h2>
+
+    <h3>Environment and hosting checks</h3>
+
+    <ul>
+      <li>Production hosting is sized appropriately for expected traffic and growth</li>
+      <li>SSL certificates are installed and renewal is automated</li>
+      <li>Staging environment exists and mirrors production as closely as practical</li>
+      <li>Backups include both files and database, with retention and restore process documented</li>
+    </ul>
+
+    <h3>Forms, CRM, and ERP integrations</h3>
+
+    <ul>
+      <li>All lead and contact forms submit successfully and show a clear confirmation message or thank you page</li>
+      <li>Form submissions reach the correct destinations, such as CRM, ERP, email inboxes, or ticketing systems</li>
+      <li>Required fields are enforced and error messages are understandable</li>
+      <li>Duplicate submission protections are reasonable and not overly aggressive</li>
+      <li>If you integrate with an ERP or other back office system, test both success and failure paths for quote, order, or account creation</li>
+    </ul>
+
+    <h3>Authentication and portals</h3>
+
+    <ul>
+      <li>Login, logout, and password reset flows work and use branded, trusted pages</li>
+      <li>Role based access is configured correctly, with no obvious privilege leaks</li>
+      <li>Test accounts exist for each major role so you can spot check access</li>
+    </ul>
+
+    <h3>Third party services</h3>
+
+    <ul>
+      <li>Payment gateways are in live mode, with at least one real test transaction run end to end</li>
+      <li>Search, chat, or support widgets load correctly and do not block page rendering</li>
+      <li>Email sending from forms or transactional flows is configured with proper authentication where possible</li>
+    </ul>
+
+    <h2>3. Redirects, URLs, and Legacy Content</h2>
+
+    <h3>URL structure and canonicalization</h3>
+
+    <ul>
+      <li>Primary domain is chosen and enforced, for example always using https and a single www or non www version</li>
+      <li>Trailing slash and case conventions are consistent for key URLs</li>
+      <li>Canonical tags are set correctly on important pages and not duplicated or conflicting</li>
+    </ul>
+
+    <h3>Redirect plan from the old site</h3>
+
+    <ul>
+      <li>List of high value legacy URLs is identified, including top landing pages, backlinks, and bookmarked resources</li>
+      <li>301 redirects map old URLs to the most relevant new pages, not just the home page</li>
+      <li>Redirect rules are tested in staging, with spot checks for important combinations</li>
+      <li>Chains and loops are avoided so redirects are as direct as possible</li>
+    </ul>
+
+    <h2>4. Analytics and Tagging Readiness</h2>
+
+    <h3>Core tracking in place</h3>
+
+    <ul>
+      <li>Primary analytics property, such as GA4, is installed on all relevant templates</li>
+      <li>Tracking code loads once per page, not multiple times from overlapping plugins</li>
+      <li>Views of internal traffic are filtered or at least labeled where possible</li>
+    </ul>
+
+    <h3>Conversions and events</h3>
+
+    <ul>
+      <li>Key lead actions, such as form submissions, booked calls, and quote requests, are tracked as events</li>
+      <li>Those events are correctly marked as conversions in analytics</li>
+      <li>Conversions fire once per successful action and are not triggered by validation errors or simple page loads</li>
+      <li>At least one end to end path from landing page to conversion has been tested with debugging tools</li>
+    </ul>
+
+    <h3>Tag management and pixels</h3>
+
+    <ul>
+      <li>Tag manager containers, such as Google Tag Manager, are connected and working</li>
+      <li>Ad platform tags for search, social, and other paid channels are installed and firing on the correct pages</li>
+      <li>Consent rules and cookie banners are wired to control non essential tags where required</li>
+    </ul>
+
+    <h2>5. SEO and Performance Readiness</h2>
+
+    <h3>Technical SEO basics</h3>
+
+    <ul>
+      <li>Robots.txt is intentional and does not block production content</li>
+      <li>Sitemap is generated, accurate, and submitted to search consoles</li>
+      <li>Page titles and descriptions are present for important pages, with human readable structure</li>
+      <li>Open Graph and social sharing tags are set for key pages, especially home and top resources</li>
+    </ul>
+
+    <h3>Performance checks</h3>
+
+    <ul>
+      <li>Core Web Vitals have been tested on a few representative templates, such as home, service, and resource pages</li>
+      <li>Page weight is reasonable, with large images and unused scripts minimized</li>
+      <li>Caching and content delivery features from your host, plugins, or platform are configured and tested</li>
+    </ul>
+
+    <p>The goal is not perfection on day one. The goal is to avoid obvious regressions and performance issues that would hurt user experience or SEO from the start.</p>
+
+    <h2>6. Launch Day Plan and Post-Launch Monitoring</h2>
+
+    <h3>Launch timing and communication</h3>
+
+    <ul>
+      <li>Launch window is chosen to balance internal availability and external impact, often outside of peak business hours</li>
+      <li>Stakeholders know when the switch will happen and what minor issues to expect</li>
+      <li>Internal teams have updated links in email signatures, documents, and other places where URLs are baked in</li>
+    </ul>
+
+    <h3>Roles during launch</h3>
+
+    <ul>
+      <li>Someone is designated to execute the launch steps, such as DNS changes or platform switches</li>
+      <li>Someone monitors the site from an external network for uptime and basic function</li>
+      <li>Someone watches forms, integrations, and analytics for anomalies</li>
+      <li>Escalation paths are clear if a serious problem is found</li>
+    </ul>
+
+    <h3>Post-launch checks in the first 24 to 72 hours</h3>
+
+    <ul>
+      <li>Confirm forms and lead flows are working under real traffic</li>
+      <li>Monitor error logs for new recurring issues</li>
+      <li>Watch key metrics in analytics, such as sessions, conversions, and top pages, for unexpected drops or spikes</li>
+      <li>Verify that search consoles have started seeing the new site and are not reporting critical issues</li>
+    </ul>
+
+    <h2>7. Ownership and Documentation</h2>
+
+    <p>A business-critical site is not a one time project. It needs ongoing care. Before you call launch finished, make sure you have:</p>
+
+    <ul>
+      <li>A simple document describing how the site is hosted, how to access staging, and where backups live</li>
+      <li>A record of which integrations exist and who owns each system on the other side</li>
+      <li>Credentials managed in a password manager, not in email threads or local files</li>
+      <li>A short list of recurring maintenance tasks and how often they should run</li>
+    </ul>
+
+    <h2>Quick Launch Checklist Summary</h2>
+
+    <p>If you need a condensed version for a final pre-flight check, make sure you can honestly say “yes” to questions like these:</p>
+
+    <ul>
+      <li>Can prospects find, understand, and use our main calls to action on desktop and mobile</li>
+      <li>Do our forms, logins, and key integrations work end to end in staging and production</li>
+      <li>Are redirects in place so important old URLs lead somewhere sensible</li>
+      <li>Is analytics tracking conversions, not just traffic, from day one</li>
+      <li>Are backups, monitoring, and a rollback path ready in case something goes wrong</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>How far in advance should we start using a launch checklist?</h3>
+    <p>For a business-critical site, start working through a launch checklist at least a few weeks before your planned go live. Some items, such as redirects, integration tests, and analytics setup, take time to do properly and are stressful if left to the final days.</p>
+
+    <h3>Do we really need a staging environment to launch safely?</h3>
+    <p>If your site handles leads, customer logins, or integrations, a staging environment is strongly recommended. Staging lets you test content, themes, plugins, redirects, and tracking in a safe place before promoting changes to production. It will not catch every possible issue, but it significantly reduces the risk of major surprises.</p>
+
+    <h3>What is the most common thing teams forget during launch?</h3>
+    <p>Teams often underestimate the importance of redirects and tracking. It is common to see new sites launch with broken or missing redirects from high value legacy URLs, or with analytics and conversion tags not wired correctly. Both issues can quietly hurt SEO and lead tracking if not addressed.</p>
+
+    <h3>How soon after launch should we expect analytics data to be “trustworthy”?</h3>
+    <p>Basic pageview and event data is usually reliable within the first day if tracking is implemented correctly. For trend and performance decisions, it is better to look at at least one to two weeks of data, and ideally compare it to similar periods from the old site where possible. Early days are more about catching obvious issues than making long term judgments.</p>
+
+    <h3>Who should own this checklist inside our organization?</h3>
+    <p>Ownership often sits with a digital lead, marketing operations, or a product owner for the site, working closely with developers and system owners for integrations. What matters most is that someone is clearly accountable for ensuring the checklist is used, updated, and adapted to your specific stack, rather than treating launch as a one off event with no structured handover.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Business-Critical Website Launch Checklist (with Integrations and Analytics)",
+  "description": "A practical website launch checklist for business-critical sites, covering content, redirects, integrations, analytics, performance, and post-launch monitoring so you can go live with confidence.",
+  "image": [
+    "https://elephas.us/assets/img/resources/business-critical-website-launch-checklist.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/guides-checklists/business-critical-website-launch-checklist.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
