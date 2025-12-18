@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Designing Your First 12 Months of Business Central Reporting | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical guide to designing your first 12 months of Business Central reporting so finance, operations, and leadership get what they need without drowning in one-off report requests." href="">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // GA4
+    gtag('config', 'G-79H477PVKN');
+    // Google Ads
+    gtag('config', 'AW-990445102');
+  </script>
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1600525836687823');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1600525836687823&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Designing Your First 12 Months of Business Central Reporting</h1>
+
+    <p>One of the first surprises after a Business Central go live is how quickly the report requests pile up. Finance needs their month end pack. Operations wants open order visibility “like the old system.” Leadership wants margin and trend views that cut across everything. Users keep exporting to Excel anyway.</p>
+
+    <p>If you treat reporting as “we will just turn on some standard reports” or “we will solve it all with Power BI later,” you usually end up with a tangle of one off requests, conflicting numbers, and frustrated stakeholders.</p>
+
+    <p>This guide is a practical roadmap for your first 12 months of Business Central reporting. The goal is not hundreds of reports. The goal is a deliberate, staged reporting layer that:</p>
+
+    <ul>
+      <li>Gives finance, operations, and leadership what they actually need</li>
+      <li>Takes advantage of Business Central’s strengths</li>
+      <li>Leaves room for analytics and Power BI without depending on them on day one</li>
+    </ul>
+
+    <h2>Start With Audiences and Decisions, Not Tools</h2>
+
+    <p>Before you talk about account schedules, list pages, or Power BI, get clear on three things:</p>
+
+    <ul>
+      <li><strong>Who are the audiences?</strong> Finance, operations, sales, leadership, and sometimes external stakeholders like banks or owners.</li>
+      <li><strong>What decisions do they make regularly?</strong> Approving spend, adjusting pricing, planning capacity, chasing cash, managing risk.</li>
+      <li><strong>How often do they need those decisions supported?</strong> Daily, weekly, monthly, quarterly.</li>
+    </ul>
+
+    <p>That gives you a simple matrix:</p>
+
+    <ul>
+      <li>Finance &rarr; month end, cash, profitability</li>
+      <li>Operations &rarr; open orders, inventory, lead times, exceptions</li>
+      <li>Leadership &rarr; growth, margin, pipeline, major risks</li>
+    </ul>
+
+    <p>Your reporting roadmap should map directly to that matrix, not to a catalog of every standard report available in Business Central.</p>
+
+    <h2>A 12 Month Reporting Roadmap in Three Phases</h2>
+
+    <p>Instead of trying to build “all the reports” before go live, it is more realistic to phase reporting over your first year:</p>
+
+    <ol>
+      <li><strong>Months 0–3:</strong> Day one essentials and trust in the numbers</li>
+      <li><strong>Months 3–6:</strong> Operational and management reporting</li>
+      <li><strong>Months 6–12:</strong> Strategic and cross system analytics</li>
+    </ol>
+
+    <h2>Months 0–3: Day One Essentials and Trust in the Numbers</h2>
+
+    <p>The first three months are about stability. The priority is not fancy dashboards. It is making sure people believe what they see and can close the books without heroics.</p>
+
+    <h3>Finance essentials</h3>
+
+    <p>At minimum, make sure you have a clear, repeatable way to produce:</p>
+
+    <ul>
+      <li>Trial balance and core financial statements (P&amp;L, balance sheet, cash flow)</li>
+      <li>AR aging and AP aging that match what you actually see with customers and vendors</li>
+      <li>Bank reconciliation reports that tie to your statements</li>
+      <li>Key control reports (posted entries, posting groups, dimension combinations)</li>
+    </ul>
+
+    <p>In Business Central, that often means:</p>
+
+    <ul>
+      <li>Using <strong>account schedules</strong> for core financial statements instead of replicating old Excel layouts line for line</li>
+      <li>Leaning on standard <strong>aged accounts receivable/payable</strong> but checking filters and dimension usage</li>
+      <li>Designing a small number of saved views or filtered list pages for finance users</li>
+    </ul>
+
+    <h3>Operational essentials</h3>
+
+    <p>Operations does not need every possible detail on day one. They need to know “what is open” and “what is stuck.” Useful starting points:</p>
+
+    <ul>
+      <li>Open sales orders with ship by dates, status, and any blocked flags</li>
+      <li>Open purchase orders with expected receipt dates and vendor performance</li>
+      <li>Inventory on hand by item and location, with obvious exceptions (negative inventory, stockouts)</li>
+      <li>Any critical queues that drive day to day work, such as shipments to post or invoices to release</li>
+    </ul>
+
+    <p>Business Central’s list pages and role centers are your friend here. Instead of building custom reports for every question, invest some time in:</p>
+
+    <ul>
+      <li>Role tailored <strong>cues</strong> on the home page for “things that need attention”</li>
+      <li>Saved views with filters (for example, late orders, backordered items, unposted shipments)</li>
+      <li>Consistent use of fields and statuses so those filters behave predictably</li>
+    </ul>
+
+    <h3>Leadership essentials</h3>
+
+    <p>In the first three months, leadership mostly needs confidence that the new system is working and that the basics are under control:</p>
+
+    <ul>
+      <li>High level P&amp;L and cash view that matches expectations</li>
+      <li>Simple growth and margin snapshots versus prior period</li>
+      <li>Visibility into any operational bottlenecks or backlog</li>
+    </ul>
+
+    <p>Often you can serve this with a small one to two page “executive summary” bundle exported from Business Central and, yes, sometimes still assembled in Excel during the early months while you stabilize the core.</p>
+
+    <h2>Months 3–6: Operational and Management Reporting</h2>
+
+    <p>Once you trust the basics, you can start using Business Central reporting to actually improve how people run the business instead of just proving the numbers are right.</p>
+
+    <h3>Leaning into dimensions</h3>
+
+    <p>If you have designed your <strong>dimensions</strong> well, months three to six are when they start paying off. Common examples:</p>
+
+    <ul>
+      <li>Profitability by customer group, region, or channel</li>
+      <li>Spend by vendor category or project</li>
+      <li>Sales and margin by item category or product line</li>
+    </ul>
+
+    <p>Practical steps:</p>
+
+    <ul>
+      <li>Create a small set of <strong>account schedules</strong> that slice P&amp;L by key dimensions</li>
+      <li>Teach finance and operations how to use dimension filters on ledger entries and analysis views</li>
+      <li>Standardize dimension usage so people do not have to guess which combination to pick</li>
+    </ul>
+
+    <h3>Management packs by audience</h3>
+
+    <p>Rather than letting every manager define a unique report wish list, build a small number of “management packs” aligned to your earlier matrix.</p>
+
+    <p>For example:</p>
+
+    <ul>
+      <li><strong>Finance pack:</strong> monthly P&amp;L and balance sheet by dimension, AR/AP aging, cash summary, key ratios</li>
+      <li><strong>Sales pack:</strong> bookings and billings by customer and product, pipeline from your CRM if integrated, win/loss trends</li>
+      <li><strong>Operations pack:</strong> on time delivery, open orders by stage, inventory turns, stockout report, supplier performance</li>
+    </ul>
+
+    <p>These do not all have to be “reports” in the traditional sense. A management pack can be:</p>
+
+    <ul>
+      <li>A collection of account schedules</li>
+      <li>Key list pages with saved filters and layouts</li>
+      <li>A repeatable export into a standard Excel template</li>
+    </ul>
+
+    <h3>Exception based views</h3>
+
+    <p>Months three to six are also a good time to reduce noise by focusing on exceptions:</p>
+
+    <ul>
+      <li>Orders that missed promise dates</li>
+      <li>Items with no recent movement but high inventory value</li>
+      <li>Customers consistently paying late</li>
+      <li>Vendors with repeated late deliveries</li>
+    </ul>
+
+    <p>Business Central is well suited to this with filtered list pages and cues. The less time managers spend pulling data, the more time they have to act on it.</p>
+
+    <h2>Months 6–12: Strategic and Cross System Analytics</h2>
+
+    <p>By the second half of your first year, you should have:</p>
+
+    <ul>
+      <li>Reliable finance reporting</li>
+      <li>Useful operational views in Business Central itself</li>
+      <li>Live experience with how people actually use the system</li>
+    </ul>
+
+    <p>Now you can make a more informed decision about where <strong>analytics</strong> and tools like Power BI fit.</p>
+
+    <h3>What belongs in Business Central vs outside</h3>
+
+    <p>A simple rule of thumb:</p>
+
+    <ul>
+      <li><strong>In Business Central:</strong> transactional detail, statutory reporting, day to day operational views, and anything that needs to be tightly integrated with posting and approvals.</li>
+      <li><strong>Outside Business Central (Power BI, data warehouse):</strong> heavy trend analysis, cross system metrics (ERP + CRM + web), very large data sets, and visualizations needed for board or investor level conversations.</li>
+    </ul>
+
+    <p>Examples of analytics that often live better outside Business Central:</p>
+
+    <ul>
+      <li>Multi year margin trends by product and channel</li>
+      <li>Customer cohort analysis and retention metrics</li>
+      <li>Blending ERP actuals with budget, forecast, and pipeline</li>
+      <li>Operational KPIs that pull from both ERP and other systems</li>
+    </ul>
+
+    <h3>Designing a simple analytics layer</h3>
+
+    <p>You do not have to implement a full data warehouse in month six. A realistic starting point can be:</p>
+
+    <ul>
+      <li>Defined exports or dataflows from Business Central into a reporting database or data lake</li>
+      <li>A small set of curated Power BI models that mirror your management packs (finance, sales, operations)</li>
+      <li>Clear ownership for who maintains those models and dashboards</li>
+    </ul>
+
+    <p>The important part is governance: who can change measures, add new pages, and approve definitions so “revenue” or “margin” means the same thing in every view.</p>
+
+    <h2>Designing for Reporting From Day One</h2>
+
+    <p>Even though advanced analytics come later, you can make your life easier by designing Business Central with reporting in mind from the start:</p>
+
+    <ul>
+      <li><strong>Dimensions:</strong> decide on a small number of global and shortcut dimensions that match how you want to see the business (region, line of business, customer group, project, channel).</li>
+      <li><strong>Posting groups:</strong> keep them understandable and stable so reports map cleanly to accounts.</li>
+      <li><strong>Master data standards:</strong> naming, numbering, and categorization that make searching and grouping intuitive.</li>
+      <li><strong>Document numbering:</strong> predictable sequences that make audit trails and reconciliations easier.</li>
+    </ul>
+
+    <p>The cost of changing these decisions later is high. It is worth slowing down early to align finance, operations, and IT on a data design that serves reporting as well as day to day processing.</p>
+
+    <h2>Governance: Who Owns Reporting?</h2>
+
+    <p>Reporting tends to fall apart when no one clearly owns it. A simple governance model for your first year might look like:</p>
+
+    <ul>
+      <li><strong>Reporting owner:</strong> typically someone in finance or operations charged with keeping definitions consistent and prioritizing new requests.</li>
+      <li><strong>Technical owner:</strong> an internal or partner resource who understands Business Central structures and any external tools (Power BI, SQL, etc.).</li>
+      <li><strong>Request process:</strong> a lightweight way for stakeholders to request new reports or changes, including why they need it and how often they will use it.</li>
+    </ul>
+
+    <p>This does not have to be heavy. The point is to avoid every request becoming an urgent one off project that only lives in one person’s inbox.</p>
+
+    <h2>Example “First Year” Reporting Checklist</h2>
+
+    <p>To make this concrete, here is a checklist you can adapt:</p>
+
+    <h3>Before go live</h3>
+
+    <ul>
+      <li>Agree on key audiences and their top three decisions</li>
+      <li>Design dimensions and chart of accounts with reporting in mind</li>
+      <li>Configure and test core financial statements in account schedules</li>
+      <li>Validate AR/AP aging, bank reconciliation, and inventory valuation reports</li>
+    </ul>
+
+    <h3>Months 0–3</h3>
+
+    <ul>
+      <li>Stabilize month end close in Business Central</li>
+      <li>Create saved views and cues for open orders, inventory, and exceptions</li>
+      <li>Define a simple executive summary pack for leadership</li>
+      <li>Start tracking which reports and views people actually use</li>
+    </ul>
+
+    <h3>Months 3–6</h3>
+
+    <ul>
+      <li>Build finance, sales, and operations management packs</li>
+      <li>Implement dimension based reporting for profitability and spend</li>
+      <li>Introduce exception reporting for late orders, stockouts, and chronic issues</li>
+      <li>Confirm governance: reporting owner, technical owner, request process</li>
+    </ul>
+
+    <h3>Months 6–12</h3>
+
+    <ul>
+      <li>Decide where analytics lives (Power BI, data warehouse, or similar)</li>
+      <li>Build a small number of curated analytics models aligned to management packs</li>
+      <li>Standardize KPI definitions and document them</li>
+      <li>Plan your “year two” roadmap based on what stakeholders actually use and still feel is missing</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>How many reports should we build before we go live on Business Central?</h3>
+    <p>You need fewer than you think. Focus on a small set of essentials: core financial statements, AR/AP aging, bank reconciliation, inventory valuation, and a handful of open order and exception views. It is better to have ten well designed, well tested reports than thirty that no one completely trusts.</p>
+
+    <h3>Do we need Power BI from day one?</h3>
+    <p>No. Business Central’s built in reporting, account schedules, and list pages can cover most day to day and month end needs early on. Power BI and similar tools shine once you want cross system analytics, heavier trend analysis, or more sophisticated visualizations. It is usually more effective to introduce them after you have stable data and clear questions to answer.</p>
+
+    <h3>How do we stop everyone from just exporting to Excel?</h3>
+    <p>Some exporting is inevitable, and Excel will always have a place. The goal is not to ban it but to reduce unnecessary exports. Provide a small set of well designed views in Business Central that answer common questions directly, and make sure those views are easy to find from role centers. Over time, track which exports are still happening regularly and ask why. Often that reveals a missing field, filter, or summary you can address.</p>
+
+    <h3>How often should we revisit our reporting design?</h3>
+    <p>In the first year, it is reasonable to do a light review every quarter. Look at what is used, what is ignored, and what new questions have emerged as people get comfortable with Business Central. Use that to refine management packs, retire redundant reports, and decide where analytics investments will actually pay off.</p>
+
+    <h3>Who should own reporting in a small or mid sized business?</h3>
+    <p>For many organizations, reporting ownership sits best with finance, partnered closely with operations and IT or your implementation partner. Finance is typically closest to the numbers and external reporting requirements, while operations knows what front line teams need to run the business. The technical owner ensures that what you design is sustainable and consistent with how Business Central is configured.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Designing Your First 12 Months of Business Central Reporting",
+  "description": "A practical guide to designing your first 12 months of Business Central reporting so finance, operations, and leadership get what they need without drowning in one-off report requests.",
+  "image": [
+    "https://elephas.us/assets/img/resources/business-central-reporting-first-12-months.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/business-central-erp/designing-your-first-12-months-of-business-central-reporting.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
