@@ -91,6 +91,18 @@
     <changefreq>monthly</changefreq>
   </url>
 
+  <url>
+    <loc>https://elephas.us/resources/business-central-erp/designing-your-first-12-months-of-business-central-reporting.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/business-central-erp/business-central-data-migration-playbook.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
   <!-- Integrations & Architecture resources -->
   <url>
     <loc>https://elephas.us/resources/integrations-architecture/calm-integration-architecture-around-your-erp.html</loc>
@@ -171,6 +183,18 @@
     <changefreq>monthly</changefreq>
   </url>
 
+  <url>
+    <loc>https://elephas.us/resources/web-wordpress/wordpress-maintenance-for-business-critical-sites.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/web-wordpress/ga4-for-b2b-websites-how-to-read-the-numbers.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
   <!-- Guides & Checklists resources -->
   <url>
     <loc>https://elephas.us/resources/guides-checklists/erp-integration-readiness-checklist.html</loc>
@@ -210,6 +234,12 @@
 
   <url>
     <loc>https://elephas.us/resources/guides-checklists/online-and-phone-scams-how-to-protect-your-family.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://elephas.us/resources/guides-checklists/business-critical-website-launch-checklist.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
