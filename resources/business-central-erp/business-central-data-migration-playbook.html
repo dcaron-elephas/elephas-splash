@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Business Central Data Migration Playbook, What to Bring, What to Leave Behind | Elephas Resources</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical Business Central data migration playbook that helps you decide what to bring into Business Central, what to leave in legacy systems, and how to keep history accessible without overloading your new ERP." href="">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79H477PVKN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // GA4
+    gtag('config', 'G-79H477PVKN');
+    // Google Ads
+    gtag('config', 'AW-990445102');
+  </script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1600525836687823');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1600525836687823&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body class="index-page">
+
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center" data-include="partials/header.html"></div>
+</header>
+
+<article>
+  <div class="container" style="max-width:970px;">
+
+    <h1>Business Central Data Migration Playbook, What to Bring, What to Leave Behind</h1>
+
+    <p>Ask anyone who has lived through an ERP project what they wish they had started earlier, and “data migration” is usually near the top of the list. Not because it is glamorous, but because it quietly affects everything that happens on day one and beyond.</p>
+
+    <p>The hard part is not moving data from System A into Business Central. The hard part is deciding:</p>
+
+    <ul>
+      <li>What really needs to live inside Business Central</li>
+      <li>What can stay in legacy or an archive and still be usable</li>
+      <li>How far back you actually need to go</li>
+      <li>How much cleanup is worth doing before you load</li>
+    </ul>
+
+    <p>This playbook is a practical guide to those decisions so you can go live with a clean, useful Business Central environment instead of dragging twenty years of baggage into your new system.</p>
+
+    <h2>Why Data Migration Deserves Its Own Plan</h2>
+
+    <p>It is tempting to treat data migration as a technical task that happens near the end of the project. In reality, it is a design decision that sits at the intersection of:</p>
+
+    <ul>
+      <li>Accounting and finance reporting</li>
+      <li>Operational processes like sales, purchasing, and inventory</li>
+      <li>Compliance and audit needs</li>
+      <li>Everyday user behavior, where people actually go to find answers</li>
+    </ul>
+
+    <p>If you decide what to bring and what to leave behind in a rush, you usually pay for it later in the form of awkward workarounds, confusing history, and frustrated users who keep logging back into the old system.</p>
+
+    <h2>The Three Types of Data in a Business Central Migration</h2>
+
+    <p>It helps to group your data into three broad buckets before you talk about tools or file formats.</p>
+
+    <h3>1. Master data</h3>
+
+    <p>Core records that everything else depends on:</p>
+
+    <ul>
+      <li>Customers and ship-to addresses</li>
+      <li>Vendors</li>
+      <li>Items, resources, bills of material, variants</li>
+      <li>Chart of accounts and dimensions</li>
+      <li>Posting groups, payment terms, shipping agents, tax areas</li>
+    </ul>
+
+    <p>These are almost always “bring it, but clean it” candidates. Duplicates, inconsistent naming, and half retired codes will follow you into Business Central if you do not decide what should survive and how it should look.</p>
+
+    <h3>2. Open and in flight data</h3>
+
+    <p>Anything that is still active at cutover:</p>
+
+    <ul>
+      <li>Open sales orders and quotes</li>
+      <li>Open purchase orders</li>
+      <li>Open accounts receivable and accounts payable</li>
+      <li>Inventory on hand and item ledger entries around cutover</li>
+      <li>Bank balances and unreconciled transactions</li>
+      <li>Projects or jobs in progress</li>
+    </ul>
+
+    <p>This is the non negotiable set. If you cannot see and manage open activity in Business Central on day one, users will immediately reach for the old system.</p>
+
+    <h3>3. Historical data</h3>
+
+    <p>Everything that is closed and in the past:</p>
+
+    <ul>
+      <li>Posted invoices, shipments, receipts</li>
+      <li>Detailed ledger entries and audit trails</li>
+      <li>Old projects, orders, and service history</li>
+      <li>Legacy price lists and promotions</li>
+    </ul>
+
+    <p>This is where you have the most flexibility and the biggest risk of overdoing it. A lot of teams default to “bring everything since 2004” without asking how often they really need to look ten years back in the operational system.</p>
+
+    <h2>What You Should Almost Always Bring Into Business Central</h2>
+
+    <h3>Clean, current master data</h3>
+
+    <p>You want Business Central to be the trustworthy place for core records going forward. That usually means:</p>
+
+    <ul>
+      <li>Active customers and vendors, with duplicates merged and obvious junk removed</li>
+      <li>Items and resources that you actually buy, stock, or sell</li>
+      <li>A cleaned up chart of accounts that matches your future reporting, not just your legacy system</li>
+      <li>Dimensions and posting groups that have been deliberately designed, not just copied over</li>
+    </ul>
+
+    <p>In many cases it is better to bring over only active records and keep the long tail of inactive codes in an archive or reporting database.</p>
+
+    <h3>Open items and current balances</h3>
+
+    <p>For a typical migration, you will want at least:</p>
+
+    <ul>
+      <li>Open customer invoices and credit memos</li>
+      <li>Open vendor invoices and credits</li>
+      <li>Open sales and purchase orders that still have work to do</li>
+      <li>Inventory on hand, reconciled to your general ledger</li>
+      <li>Bank balances per account, reconciled to a specific cutover date</li>
+      <li>A general ledger trial balance as of the day before go live</li>
+    </ul>
+
+    <p>The exact mechanics will depend on your partner and approach, but the goal is the same: Business Central should reflect your financial and operational position as of the cutover date without users needing to cross check the old system.</p>
+
+    <h3>Some recent transaction history</h3>
+
+    <p>You do not have to choose between “no history” and “everything back to the beginning of time.” A practical compromise is:</p>
+
+    <ul>
+      <li>One to two years of key transactional history, such as posted sales invoices and purchase invoices</li>
+      <li>Possibly more for industries with long service or warranty cycles</li>
+      <li>Summary entries for older periods so your balances and comparative reporting still work</li>
+    </ul>
+
+    <p>This gives users enough context for questions like “what did we charge this customer last year” without turning your new system into a mirror of the old one.</p>
+
+    <h2>What You Can Often Leave Behind (And Still Sleep at Night)</h2>
+
+    <p>There is always a list of things someone would like to have “just in case.” Bringing all of them into Business Central has a real cost in time, complexity, and risk.</p>
+
+    <h3>Very old detailed history</h3>
+
+    <p>Detailed transactions from many years ago usually make more sense in:</p>
+
+    <ul>
+      <li>A read only legacy instance</li>
+      <li>An archive database or data warehouse</li>
+      <li>Exports in a reporting tool</li>
+    </ul>
+
+    <p>As long as you can answer an auditor’s questions and support any remaining warranty or regulatory needs, you do not need every individual transaction living inside Business Central.</p>
+
+    <h3>Dead codes and noise</h3>
+
+    <p>Migration is the perfect time to leave behind:</p>
+
+    <ul>
+      <li>Obsolete items with no active inventory or sales</li>
+      <li>Customers and vendors you will never work with again</li>
+      <li>Dimensions that no one has used for years but still clutter every report</li>
+      <li>Old posting groups and tax codes tied to retired scenarios</li>
+    </ul>
+
+    <p>You can keep them accessible in the archive for historical reporting, but they do not need to be part of the day to day experience in Business Central.</p>
+
+    <h3>Every low level log and audit trail</h3>
+
+    <p>System logs, technical audit tables, and low level traces are better suited for specialized storage. What belongs in Business Central is the business record of what was sold, purchased, produced, or posted, not every internal system event from your legacy application.</p>
+
+    <h2>Data Quality, Clean Up Before You Load</h2>
+
+    <p>Migration is a rare chance to fix data problems that have been causing pain for years. A few high value clean up passes include:</p>
+
+    <ul>
+      <li><strong>Deduplicating customers and vendors.</strong> Decide which record wins, align names and addresses, and agree on a single account going forward.</li>
+      <li><strong>Standardizing item and resource naming.</strong> Make descriptions readable and consistent so searches and reports make sense.</li>
+      <li><strong>Mapping your chart of accounts to the new design.</strong> Use migration as the moment to simplify and modernize your account structure.</li>
+      <li><strong>Rationalizing units of measure and variants.</strong> Remove one off units that cause confusion and agree on a standard per item.</li>
+      <li><strong>Aligning posting groups and dimensions.</strong> Avoid one off combinations that create reconciliation headaches later.</li>
+    </ul>
+
+    <p>The goal is not perfection. The goal is to ensure that once data lands in Business Central, it supports clean posting, reporting, and day to day work instead of dragging old problems into the new system.</p>
+
+    <h2>A Practical Migration Scope That Works in the Real World</h2>
+
+    <p>Every implementation is different, but for many small and mid sized organizations a pragmatic scope looks something like this:</p>
+
+    <ul>
+      <li>All active master data, cleaned and deduplicated</li>
+      <li>Open AR and AP, open orders, in flight projects, and inventory on hand</li>
+      <li>A general ledger trial balance as of the cutover date</li>
+      <li>One to two years of key posted documents for operational context</li>
+      <li>Summary balances or external archives for older detailed history</li>
+    </ul>
+
+    <p>This gives you a Business Central environment that feels complete to users on day one, without becoming a multi year data archaeology project.</p>
+
+    <h2>Common Data Migration Traps to Avoid</h2>
+
+    <p>A few patterns show up over and over again when migrations go sideways:</p>
+
+    <ul>
+      <li><strong>Trying to migrate everything.</strong> The more you bring, the more mapping, cleanup, and testing you need. At some point, value flattens while risk rises.</li>
+      <li><strong>Postponing decisions about mappings.</strong> Waiting until the last few weeks to decide how accounts, dimensions, or items map into Business Central guarantees stress.</li>
+      <li><strong>Letting each department define its own codes without a shared design.</strong> That can feel flexible during migration and painful once you try to run cross functional reporting.</li>
+      <li><strong>Not testing with realistic data.</strong> A tiny test file that posts cleanly is not proof that your full data set will behave the same way.</li>
+      <li><strong>Ignoring where people will go for old answers.</strong> If you do not give users a clear way to find older history, they will keep logging into the legacy system indefinitely.</li>
+    </ul>
+
+    <h2>How to Make Migration Decisions Without Getting Stuck</h2>
+
+    <p>A simple way to keep discussions moving is to classify each data set into one of three buckets:</p>
+
+    <ul>
+      <li><strong>Must have in Business Central.</strong> Without this, we cannot operate or report correctly on day one.</li>
+      <li><strong>Nice to have in Business Central.</strong> Useful, but not required for go live. Candidates for limited history or a phase two.</li>
+      <li><strong>Archive only.</strong> We need to keep it somewhere, but we do not need it in Business Central for day to day work.</li>
+    </ul>
+
+    <p>Then ask a short list of questions for each candidate data set:</p>
+
+    <ul>
+      <li>Who uses this data today, and for what decisions?</li>
+      <li>How often do they need to see it?</li>
+      <li>What happens if they have to click into an archive instead of seeing it in Business Central?</li>
+      <li>Is there a regulatory or audit requirement that changes the answer?</li>
+    </ul>
+
+    <p>Those answers usually make it clear whether something belongs in the must have list or can safely move to archive or a later phase.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>How many years of history should we migrate into Business Central?</h3>
+    <p>It depends on your industry and reporting needs, but a common pattern is one to two years of detailed transactional history in Business Central, with older periods summarized or kept in an archive. If you have long warranty or service cycles, you may choose more for specific document types, such as service or contract history, while still summarizing other areas.</p>
+
+    <h3>Can we go live without migrating any historical transactions?</h3>
+    <p>In theory, you can go live with only master data, open items, and opening balances. In practice, most organizations find that having at least some recent history inside Business Central makes adoption smoother. Users can answer simple questions about recent pricing, order history, and issues without bouncing between systems.</p>
+
+    <h3>What should we do with documents like signed contracts or proof of delivery?</h3>
+    <p>Those documents do not always need to live inside Business Central, but they should live somewhere predictable and durable. Many teams use a document management system, a structured file storage pattern, or a CRM to hold the files and then link to them from Business Central via references or custom fields.</p>
+
+    <h3>How long does data migration usually take?</h3>
+    <p>The technical load itself can be fast once mappings and scripts are ready. The calendar time comes from decisions, cleanup, and testing. For many small and mid sized organizations, data migration runs in parallel with the rest of the implementation and goes through several cycles of test loads before a final cutover. The earlier you start making decisions about scope and mappings, the smoother that timeline becomes.</p>
+
+    <h3>What if different departments disagree about what to bring?</h3>
+    <p>That is normal. Use the must have, nice to have, and archive only buckets along with a simple cost benefit discussion. If bringing a data set into Business Central adds significant complexity, affects performance, or pushes out go live, it should deliver clear, frequent value to justify that cost.</p>
+
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Business Central Data Migration Playbook, What to Bring, What to Leave Behind",
+  "description": "A practical Business Central data migration playbook that helps you decide what to bring into Business Central, what to leave in legacy systems, and how to keep history accessible without overloading your new ERP.",
+  "image": [
+    "https://elephas.us/assets/img/resources/business-central-data-migration-playbook.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Elephas"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Elephas",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://elephas.us/assets/img/elephas-logo-square.png"
+    }
+  },
+  "datePublished": "2025-11-24",
+  "dateModified": "2025-11-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://elephas.us/resources/business-central-erp/business-central-data-migration-playbook.html"
+  }
+}
+</script>
+
+<div data-include="partials/footer.html"></div>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Includes JS File -->
+<script src="/assets/js/includes.js"></script>
+
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
