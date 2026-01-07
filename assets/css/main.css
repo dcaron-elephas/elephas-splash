@@ -999,8 +999,8 @@ font-size:32px;
 
 @media (max-width: 640px) {
   .hero h1 {
-    font-size: 42px;
-    line-height: 36px;
+    font-size: 38px;
+    line-height: 46px;
   }
 .hero .subhead{
 font-size:26px;
