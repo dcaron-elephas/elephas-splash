@@ -999,7 +999,7 @@ font-size:32px;
 
 @media (max-width: 640px) {
   .hero h1 {
-    font-size: 32px;
+    font-size: 42px;
     line-height: 36px;
   }
 .hero .subhead{
